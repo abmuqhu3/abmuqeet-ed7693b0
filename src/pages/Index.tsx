@@ -37,7 +37,7 @@ const Index = () => {
             
             <h2 className="text-xl md:text-2xl text-muted-foreground font-medium">Postgraduate in Robotics &amp; AI | Embedded Systems &amp; Autonomous Navigation</h2>
             
-            <p className="text-lg text-muted-foreground/90 max-w-xl">Robotics engineer with hands-on experience in embedded systems, autonomous navigation, and AI-driven solutions. Skilled in STM32, ROS, and real-time control, with proven work on decentralized swarm robots and intelligent automation systems. Passionate about applying robotics and AI to solve real-world challenges.</p>
+            <p className="text-lg text-muted-foreground/90 max-w-xl">Passionate about creating intelligent robotic systems with expertise in embedded systems, autonomous navigation, and AI-powered solutions for real-world challenges. </p>
             
             <div className="flex flex-wrap gap-4 pt-4">
               <Button asChild size="lg" className="group">
