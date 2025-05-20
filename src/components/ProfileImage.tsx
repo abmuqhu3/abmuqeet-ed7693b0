@@ -1,10 +1,7 @@
-
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
 const ProfileImage = () => {
-  return (
-    <div className="relative mx-auto max-w-xs">
+  return <div className="relative mx-auto max-w-xs rounded-lg">
       {/* Background decorative elements */}
       <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] rounded-full bg-gradient-to-tr from-primary/5 to-primary/20 blur-xl" />
       <div className="absolute -z-10 bottom-0 right-0 w-16 h-16 rounded-full bg-primary/10 blur-md" />
@@ -20,8 +17,6 @@ const ProfileImage = () => {
       
       {/* Decorative element */}
       <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-1.5 h-16 bg-primary/80 rounded-full" />
-    </div>
-  );
+    </div>;
 };
-
 export default ProfileImage;
