@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Linkedin, Github } from "lucide-react";
@@ -10,38 +9,31 @@ import Projects from "@/components/Projects";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
-
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { toast } = useToast();
-  
+  const {
+    toast
+  } = useToast();
   useEffect(() => {
     setIsVisible(true);
-    
+
     // Simulate loading state
     const timeout = setTimeout(() => {
       toast({
         title: "Welcome to my portfolio",
-        description: "Feel free to explore my work and get in touch!",
+        description: "Feel free to explore my work and get in touch!"
       });
     }, 1500);
-    
     return () => clearTimeout(timeout);
   }, [toast]);
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/5">
+  return <div className="min-h-screen bg-gradient-to-br from-background to-secondary/5">
       {/* Hero Section */}
       <section id="home" className="container mx-auto px-4 pt-12 md:pt-24 pb-24">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           {/* Content */}
-          <div 
-            className={`w-full lg:w-1/2 space-y-6 transition-all duration-700 transform 
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-          >
-            <h1 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-              Kalaigar Abdul Muqeet
-            </h1>
+          <div className={`w-full lg:w-1/2 space-y-6 transition-all duration-700 transform 
+              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <h1 className="text-5xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70 md:text-6xl font-bold text-justify">ABDUL MUQEET. K</h1>
             
             <h2 className="text-xl md:text-2xl text-muted-foreground font-medium">
               Postgraduate in Robotics & AI | Embedded Systems & Autonomous Navigation Specialist
@@ -86,10 +78,8 @@ const Index = () => {
           </div>
           
           {/* Profile Image */}
-          <div 
-            className={`w-full lg:w-1/2 transition-all duration-1000 delay-300
-              ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-          >
+          <div className={`w-full lg:w-1/2 transition-all duration-1000 delay-300
+              ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             <ProfileImage />
           </div>
         </div>
@@ -109,8 +99,6 @@ const Index = () => {
       
       {/* Contact Section */}
       <Contact />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
