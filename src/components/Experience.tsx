@@ -1,9 +1,6 @@
-
 import { Card, CardContent } from "@/components/ui/card";
-
 const Experience = () => {
-  return (
-    <section id="experience" className="py-24 bg-background">
+  return <section id="experience" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Experience</h2>
         
@@ -34,7 +31,7 @@ const Experience = () => {
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                 <h3 className="text-xl font-semibold">CRANES VARSITY – Post-Graduation Diploma in Data Science</h3>
                 <div className="text-sm text-muted-foreground">
-                  <span className="inline-block px-3 py-1 rounded-full bg-secondary/30">
+                  <span className="inline-block py-1 rounded-full bg-secondary/30 px-px">
                     Aug 2022 – Feb 2023
                   </span>
                 </div>
@@ -48,8 +45,6 @@ const Experience = () => {
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Experience;
