@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Linkedin, Github } from "lucide-react";
@@ -41,15 +42,21 @@ const Index = () => {
             
             <div className="flex flex-wrap gap-4 pt-4">
               <Button asChild size="lg" className="group">
-                <Link to="#projects">
+                <a href="#projects" onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                }}>
                   View My Work
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
+                </a>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="#contact">
+                <a href="#contact" onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}>
                   Let's Connect
-                </Link>
+                </a>
               </Button>
             </div>
             
