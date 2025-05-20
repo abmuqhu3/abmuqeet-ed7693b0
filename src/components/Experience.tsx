@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 const Experience = () => {
   return <section id="experience" className="py-24 bg-background">
@@ -40,6 +41,8 @@ const Experience = () => {
               
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                 <li>Gained proficiency in Python, data structures, and analytics</li>
+                <li>Acquired Python optimization and logic-building skills</li>
+                <li>Applied programming to real world data structures and analysis</li>
               </ul>
             </CardContent>
           </Card>
