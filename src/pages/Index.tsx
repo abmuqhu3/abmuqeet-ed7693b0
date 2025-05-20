@@ -35,9 +35,7 @@ const Index = () => {
               ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <h1 className="text-5xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70 md:text-6xl font-bold text-justify">ABDUL MUQEET. K</h1>
             
-            <h2 className="text-xl md:text-2xl text-muted-foreground font-medium">
-              Postgraduate in Robotics & AI | Embedded Systems & Autonomous Navigation Specialist
-            </h2>
+            <h2 className="text-xl md:text-2xl text-muted-foreground font-medium">Postgraduate in Robotics &amp; AI | Embedded Systems &amp; Autonomous Navigation</h2>
             
             <p className="text-lg text-muted-foreground/90 max-w-xl">
               Passionate about creating intelligent robotic systems with expertise in embedded systems, 
