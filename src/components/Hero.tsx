@@ -1,30 +1,30 @@
 import { motion } from "framer-motion";
-import { FileText, BookOpen, FolderOpen, ChevronDown } from "lucide-react";
+import { FileText, BookOpen, FolderOpen, ChevronDown, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import RoboticArm3D from "./RoboticArm3D";
 
 interface HeroProps {
   scrollProgress: number;
+  onArmGrab?: (target: string) => void;
 }
 
-const Hero = ({ scrollProgress }: HeroProps) => {
+const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  return (
-    <section id="home" className="relative h-screen flex items-end overflow-hidden bg-[#030308]">
-      {/* 3D Arm Scene */}
-      <div className="absolute inset-0 z-0">
-        <RoboticArm3D scrollProgress={scrollProgress} />
-      </div>
+  const handleNavClick = (id: string) => {
+    if (onArmGrab) onArmGrab(id);
+    setTimeout(() => scrollTo(id), 600);
+  };
 
+  return (
+    <section id="home" className="relative h-screen flex items-center overflow-hidden bg-[#030308]">
       {/* Vignette overlay */}
       <div className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background: `
             linear-gradient(to top, rgba(3,3,8,0.95) 0%, rgba(3,3,8,0.4) 30%, transparent 60%),
-            linear-gradient(to right, rgba(3,3,8,0.6) 0%, transparent 40%),
+            linear-gradient(to right, rgba(3,3,8,0.7) 0%, transparent 50%),
             radial-gradient(ellipse at center, transparent 50%, rgba(3,3,8,0.5) 100%)
           `
         }}
@@ -59,50 +59,102 @@ const Hero = ({ scrollProgress }: HeroProps) => {
         </div>
       </motion.div>
 
-      {/* Small tagline - left side */}
-      <motion.div
-        className="absolute left-6 md:left-10 bottom-[30%] md:bottom-[35%] z-10 max-w-[240px]"
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.5, duration: 0.7 }}
-      >
-        <p className="text-xs md:text-sm text-foreground/50 leading-relaxed font-light italic">
-          AI-Driven Autonomous Systems for Precision, Intelligence, and <span className="text-foreground/80 not-italic font-medium">Adaptability</span>
-        </p>
-      </motion.div>
-
-      {/* Main title - bottom */}
-      <div className="relative z-10 w-full px-6 md:px-10 pb-8">
+      {/* Main content - Left side: Profile + Name */}
+      <div className="relative z-10 w-full px-6 md:px-10 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+        {/* Profile section */}
         <motion.div
+          className="flex flex-col items-center md:items-start gap-6"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+        >
+          {/* Profile Image */}
+          <div className="relative">
+            <motion.div
+              className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-[#00d4ff]/20 shadow-[0_0_40px_rgba(0,212,255,0.15)]"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <img
+                src="/profile.jpg"
+                alt="Kalaigar Abdul Muqeet"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+            {/* Orbit ring */}
+            <motion.div
+              className="absolute inset-[-8px] rounded-full border border-[#00d4ff]/10"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            />
+            <motion.div
+              className="absolute top-[-4px] left-1/2 w-2 h-2 rounded-full bg-[#00d4ff]/60"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              style={{ transformOrigin: '0 calc(50% + 72px)' }}
+            />
+          </div>
+
+          {/* Name */}
+          <div className="text-center md:text-left">
+            <motion.h2
+              className="text-lg md:text-xl font-orbitron tracking-[0.15em] text-foreground/90"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              KALAIGAR ABDUL MUQEET
+            </motion.h2>
+            <motion.div
+              className="flex items-center gap-2 mt-2 justify-center md:justify-start"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.5 }}
+            >
+              <div className="h-px w-8 bg-[#00d4ff]/30" />
+              <p className="text-xs text-[#00d4ff]/60 font-mono tracking-wider uppercase">
+                ADAS & Autonomous Systems
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Right side: Title + CTAs */}
+        <motion.div
+          className="flex-1"
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
         >
+          <p className="text-xs md:text-sm text-foreground/40 leading-relaxed font-light italic mb-4 max-w-md">
+            AI-Driven Autonomous Systems for Precision, Intelligence, and{" "}
+            <span className="text-foreground/80 not-italic font-medium">Adaptability</span>
+          </p>
+
           <h1 className="text-[clamp(2.5rem,8vw,7rem)] font-light leading-[0.95] tracking-tight text-foreground/90">
             <span className="italic font-serif font-light text-foreground/70">Research</span>{" "}
             <span className="font-normal">Engineer</span>
           </h1>
-        </motion.div>
 
-        {/* Action buttons & social */}
-        <motion.div
-          className="flex items-center justify-between mt-6 flex-wrap gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8, duration: 0.6 }}
-        >
-          <div className="flex gap-3">
-            <Button 
-              onClick={() => scrollTo("projects")} 
+          {/* Action buttons */}
+          <motion.div
+            className="flex flex-wrap gap-3 mt-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.6 }}
+          >
+            <Button
+              onClick={() => handleNavClick("projects")}
               variant="outline"
               className="border-[#00d4ff]/20 hover:border-[#00d4ff]/50 hover:bg-[#00d4ff]/5 font-mono text-[10px] tracking-wider uppercase text-foreground/70 hover:text-foreground rounded-none px-5 h-9"
             >
               <FolderOpen className="mr-2 h-3 w-3" />
               Projects
             </Button>
-            <Button 
-              variant="outline" 
-              onClick={() => scrollTo("publications")}
+            <Button
+              variant="outline"
+              onClick={() => handleNavClick("publications")}
               className="border-foreground/10 hover:border-foreground/30 font-mono text-[10px] tracking-wider uppercase text-foreground/50 hover:text-foreground rounded-none px-5 h-9"
             >
               <BookOpen className="mr-2 h-3 w-3" />
@@ -114,27 +166,41 @@ const Hero = ({ scrollProgress }: HeroProps) => {
                 Resume
               </a>
             </Button>
-          </div>
+            <Button
+              variant="outline"
+              onClick={() => handleNavClick("contact")}
+              className="border-foreground/10 hover:border-foreground/30 font-mono text-[10px] tracking-wider uppercase text-foreground/50 hover:text-foreground rounded-none px-5 h-9"
+            >
+              <Mail className="mr-2 h-3 w-3" />
+              Contact
+            </Button>
+          </motion.div>
 
-          <div className="flex items-center gap-6 font-mono text-[10px] tracking-[0.2em] uppercase text-foreground/30">
+          {/* Social links */}
+          <motion.div
+            className="flex items-center gap-6 mt-6 font-mono text-[10px] tracking-[0.2em] uppercase text-foreground/30"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.8, duration: 0.6 }}
+          >
             <a href="https://linkedin.com/in/abdulmuqeet343" target="_blank" rel="noopener noreferrer" className="hover:text-[#00d4ff] transition-colors">LinkedIn</a>
             <a href="https://github.com/abmuqhu3" target="_blank" rel="noopener noreferrer" className="hover:text-[#00d4ff] transition-colors">GitHub</a>
             <a href="mailto:am586288@gmail.com" className="hover:text-[#00d4ff] transition-colors">Email</a>
-          </div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute right-6 md:right-10 bottom-0 flex flex-col items-center gap-2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <span className="text-[9px] font-mono text-foreground/20 tracking-widest uppercase writing-mode-vertical" style={{ writingMode: 'vertical-rl' }}>
-            Scroll
-          </span>
-          <ChevronDown className="h-3 w-3 text-foreground/20" />
+          </motion.div>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute right-6 md:right-10 bottom-8 flex flex-col items-center gap-2 z-10"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <span className="text-[9px] font-mono text-foreground/20 tracking-widest uppercase" style={{ writingMode: 'vertical-rl' }}>
+          Scroll
+        </span>
+        <ChevronDown className="h-3 w-3 text-foreground/20" />
+      </motion.div>
     </section>
   );
 };

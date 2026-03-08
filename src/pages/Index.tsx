@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
@@ -9,7 +9,8 @@ import ResumeSection from "@/components/ResumeSection";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import SectionReveal from "@/components/SectionReveal";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import RoboticArm3D from "@/components/RoboticArm3D";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -24,18 +25,29 @@ const navItems = [
   { label: "Contact", id: "contact" },
 ];
 
+type GrabState = 'idle' | 'reaching' | 'grabbing' | 'pulling' | 'releasing';
+
+const GRAB_SEQUENCE_TIMING = {
+  reaching: 800,
+  grabbing: 600,
+  pulling: 700,
+  releasing: 500,
+};
+
 const Index = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
   const [showNav, setShowNav] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [grabTarget, setGrabTarget] = useState<string | null>(null);
+  const [grabState, setGrabState] = useState<GrabState>('idle');
 
   // Force dark mode
   useEffect(() => {
     document.documentElement.classList.add("dark");
   }, []);
 
-  // Track scroll progress for 3D arm
+  // Track scroll progress
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -64,14 +76,40 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
 
+  const triggerArmGrab = useCallback((target: string) => {
+    if (grabState !== 'idle') return;
+    setGrabTarget(target);
+    setGrabState('reaching');
+
+    setTimeout(() => setGrabState('grabbing'), GRAB_SEQUENCE_TIMING.reaching);
+    setTimeout(() => setGrabState('pulling'), GRAB_SEQUENCE_TIMING.reaching + GRAB_SEQUENCE_TIMING.grabbing);
+    setTimeout(() => setGrabState('releasing'), GRAB_SEQUENCE_TIMING.reaching + GRAB_SEQUENCE_TIMING.grabbing + GRAB_SEQUENCE_TIMING.pulling);
+    setTimeout(() => {
+      setGrabState('idle');
+      setGrabTarget(null);
+    }, GRAB_SEQUENCE_TIMING.reaching + GRAB_SEQUENCE_TIMING.grabbing + GRAB_SEQUENCE_TIMING.pulling + GRAB_SEQUENCE_TIMING.releasing);
+  }, [grabState]);
+
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    triggerArmGrab(id);
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }, 600);
     setMobileMenuOpen(false);
   };
 
   return (
     <div className="min-h-screen bg-[#030308] text-foreground overflow-x-hidden">
-      {/* Floating nav - appears after hero */}
+      {/* Fixed 3D Arm - persists across scroll */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <RoboticArm3D
+          scrollProgress={scrollProgress}
+          grabTarget={grabTarget}
+          grabState={grabState}
+        />
+      </div>
+
+      {/* Floating nav */}
       <AnimatePresence>
         {showNav && (
           <motion.nav
@@ -85,8 +123,6 @@ const Index = () => {
               <button onClick={() => scrollTo("home")} className="font-orbitron text-xs tracking-[0.2em] text-[#00d4ff]/70 hover:text-[#00d4ff] transition-colors">
                 KAM
               </button>
-
-              {/* Desktop nav */}
               <div className="hidden md:flex items-center gap-1">
                 {navItems.map((item) => (
                   <button
@@ -102,19 +138,10 @@ const Index = () => {
                   </button>
                 ))}
               </div>
-
-              {/* Mobile hamburger */}
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden text-foreground/50 h-8 w-8"
-              >
+              <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-foreground/50 h-8 w-8">
                 {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
               </Button>
             </div>
-
-            {/* Mobile menu */}
             <AnimatePresence>
               {mobileMenuOpen && (
                 <motion.div
@@ -145,62 +172,34 @@ const Index = () => {
         )}
       </AnimatePresence>
 
-      {/* Hero - full screen with 3D arm */}
-      <Hero scrollProgress={scrollProgress} />
+      {/* Hero */}
+      <Hero scrollProgress={scrollProgress} onArmGrab={triggerArmGrab} />
 
-      {/* Mechanical divider */}
-      <div className="relative h-px">
+      {/* Divider */}
+      <div className="relative h-px z-10">
         <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
       </div>
 
       {/* Content sections */}
-      <div className="relative">
-        {/* Subtle grid background for content area */}
+      <div className="relative z-10">
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: 'linear-gradient(rgba(0,212,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.3) 1px, transparent 1px)',
           backgroundSize: '60px 60px',
         }} />
 
-        <SectionReveal direction="left">
-          <About />
-        </SectionReveal>
-
+        <SectionReveal direction="left"><About /></SectionReveal>
         <MechanicalDivider />
-
-        <SectionReveal direction="right">
-          <Skills />
-        </SectionReveal>
-
+        <SectionReveal direction="right"><Skills /></SectionReveal>
         <MechanicalDivider />
-
-        <SectionReveal direction="bottom">
-          <Projects />
-        </SectionReveal>
-
+        <SectionReveal direction="bottom"><Projects /></SectionReveal>
         <MechanicalDivider />
-
-        <SectionReveal direction="top">
-          <Publications />
-        </SectionReveal>
-
+        <SectionReveal direction="top"><Publications /></SectionReveal>
         <MechanicalDivider />
-
-        <SectionReveal direction="left">
-          <Experience />
-        </SectionReveal>
-
+        <SectionReveal direction="left"><Experience /></SectionReveal>
         <MechanicalDivider />
-
-        <SectionReveal direction="right">
-          <ResumeSection />
-        </SectionReveal>
-
+        <SectionReveal direction="right"><ResumeSection /></SectionReveal>
         <MechanicalDivider />
-
-        <SectionReveal direction="bottom">
-          <Contact />
-        </SectionReveal>
-
+        <SectionReveal direction="bottom"><Contact /></SectionReveal>
         <Footer />
       </div>
     </div>
