@@ -78,6 +78,7 @@ const projects = [
     tech: ["Embedded C", "IoT", "Gas Sensors", "SMS API", "Microcontrollers"],
     achievements: ["Real-time monitoring", "Automated threshold alerts", "Embedded sensor calibration"],
     featured: false,
+    github: "",
   },
 ];
 
