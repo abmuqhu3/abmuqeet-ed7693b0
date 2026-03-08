@@ -56,6 +56,7 @@ const projects = [
     tech: ["U-Net", "CNN", "TensorFlow", "Medical Imaging", "Python"],
     achievements: ["89% classification accuracy", "U-Net pixel-wise segmentation", "Published at RCAAI 2025"],
     featured: false,
+    github: "https://github.com/abmuqhu3/Pneumonia_Detection",
   },
   {
     title: "Zomato Restaurant Data Analysis",
