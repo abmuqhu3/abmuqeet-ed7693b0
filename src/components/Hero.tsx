@@ -133,9 +133,9 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
             <span className="text-[#00d4ff]/70 not-italic font-medium">next-gen vehicle platforms</span>.
           </p>
 
-          <h1 className="text-[clamp(2.5rem,8vw,7rem)] font-light leading-[0.95] tracking-tight text-foreground/90">
+          <h1 className="text-[clamp(2.5rem,8vw,7rem)] font-light leading-[0.95] tracking-tight text-foreground/90 whitespace-nowrap">
             <span className="italic font-serif font-light text-foreground/70">Research</span>{" "}
-            <span className="font-normal">Engineer</span>
+            <span className="font-normal not-italic">Engineer</span>
           </h1>
 
           {/* Action buttons */}
