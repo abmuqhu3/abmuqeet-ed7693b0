@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Star } from "lucide-react";
+import { ChevronDown, Star, ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -12,6 +12,7 @@ const projects = [
     tech: ["TI Jacinto", "OpenVX", "Vision Apps", "TIDL", "Embedded Linux", "Sensor Processing", "ADAS"],
     achievements: ["Automotive-grade perception pipeline", "Real-time embedded deployment", "Multi-sensor fusion architecture"],
     featured: true,
+    github: "",
   },
   {
     title: "Decentralized Navigation & Obstacle Avoidance for Swarm Robots",
@@ -22,6 +23,7 @@ const projects = [
     tech: ["ROS", "SLAM", "Sensor Fusion", "Python", "Multi-Agent Systems"],
     achievements: ["Real-time multi-robot coordination", "Decentralized obstacle avoidance", "Scalable swarm architecture"],
     featured: false,
+    github: "https://github.com/abmuqhu3/Swarm-Robots",
   },
   {
     title: "Driver Drowsiness & Attention Warning System (DDAWS)",
@@ -32,6 +34,7 @@ const projects = [
     tech: ["MediaPipe", "OpenCV", "Python", "Computer Vision", "Real-time Systems"],
     achievements: ["79.09% Detection Rate", "< 5ms per frame on CPU", "23-participant validation study"],
     featured: false,
+    github: "",
   },
   {
     title: "OCR-Assisted Automated Medication Prescription Reader",
@@ -42,6 +45,7 @@ const projects = [
     tech: ["Google Vision API", "React.js", "OpenCV", "NLP", "Python"],
     achievements: ["Automated medicine extraction", "Pharmaceutical reminder system", "Published at RCAAI 2025"],
     featured: false,
+    github: "https://github.com/abmuqhu3/MedAI",
   },
   {
     title: "Pneumonia Classification & Segmentation using U-Net",
@@ -52,6 +56,7 @@ const projects = [
     tech: ["U-Net", "CNN", "TensorFlow", "Medical Imaging", "Python"],
     achievements: ["89% classification accuracy", "U-Net pixel-wise segmentation", "Published at RCAAI 2025"],
     featured: false,
+    github: "https://github.com/abmuqhu3/Pneumonia_Detection",
   },
   {
     title: "Zomato Restaurant Data Analysis",
@@ -62,6 +67,7 @@ const projects = [
     tech: ["Python", "Pandas", "NumPy", "Data Visualization", "SQL"],
     achievements: ["12,000+ restaurants analyzed", "Multi-factor correlation analysis", "Customer behavior insights"],
     featured: false,
+    github: "",
   },
   {
     title: "Air Pollution Monitoring System with SMS Alerts",
@@ -72,6 +78,7 @@ const projects = [
     tech: ["Embedded C", "IoT", "Gas Sensors", "SMS API", "Microcontrollers"],
     achievements: ["Real-time monitoring", "Automated threshold alerts", "Embedded sensor calibration"],
     featured: false,
+    github: "",
   },
 ];
 
@@ -139,13 +146,26 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           ))}
         </div>
 
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1 text-sm font-mono text-primary hover:underline"
-        >
-          {expanded ? "collapse()" : "expand()"}
-          <ChevronDown className={`h-3 w-3 transition-transform ${expanded ? "rotate-180" : ""}`} />
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="flex items-center gap-1 text-sm font-mono text-primary hover:underline"
+          >
+            {expanded ? "collapse()" : "expand()"}
+            <ChevronDown className={`h-3 w-3 transition-transform ${expanded ? "rotate-180" : ""}`} />
+          </button>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-sm font-mono text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ExternalLink className="h-3 w-3" />
+              GitHub
+            </a>
+          )}
+        </div>
       </div>
     </motion.div>
   );
