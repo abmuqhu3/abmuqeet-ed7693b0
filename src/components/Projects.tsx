@@ -34,6 +34,7 @@ const projects = [
     tech: ["MediaPipe", "OpenCV", "Python", "Computer Vision", "Real-time Systems"],
     achievements: ["79.09% Detection Rate", "< 5ms per frame on CPU", "23-participant validation study"],
     featured: false,
+    github: "",
   },
   {
     title: "OCR-Assisted Automated Medication Prescription Reader",
