@@ -16,7 +16,7 @@ const publications = [
     authors: "Kalaigar Abdul Muqeet, Dr. Rajalakshmi",
     venue: "Conference Paper",
     institution: "TiHAN, IIT Hyderabad",
-    year: "2025",
+    year: "2026",
     abstract:
       "We present DDAWS, a lightweight, camera-only framework that fuses per-driver adaptive calibration with six concurrent physiological cues — Eye Aspect Ratio (EAR), Mouth Aspect Ratio (MAR), PERCLOS, estimated Karolinska Sleepiness Scale (KSS), and 3-D head-pose yaw and pitch — under a two-tier hierarchical alert scheme with explicit state recovery. The pipeline runs on a standard CPU at under 5 ms per frame with no GPU and no pre-trained weights. Tested on 23 participants across 63,544 frames (35.3 min), DDAWS achieved a mean Detection Rate of 79.09%, Alert Precision of 72.09%, Gaze Consistency of 85.83%, and a Composite System Score of 69.67%.",
     keywords: ["Driver Drowsiness Detection", "PERCLOS", "Eye Aspect Ratio", "MediaPipe FaceMesh", "Karolinska Sleepiness Scale", "Adaptive Calibration", "Real-time Safety Systems"],
