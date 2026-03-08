@@ -60,26 +60,26 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: index * 0.1 }}
-        className="bg-card/80 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-primary/30 transition-all hover:shadow-lg hover:shadow-primary/5"
+        className="bg-foreground/[0.02] border border-foreground/[0.06] rounded p-6 hover:border-[#00d4ff]/15 transition-all"
       >
         <div className="flex gap-4">
-          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mt-1 border border-primary/20">
-            <BookOpen className="h-5 w-5 text-primary" />
+          <div className="flex-shrink-0 w-10 h-10 rounded border border-[#00d4ff]/15 bg-[#00d4ff]/5 flex items-center justify-center mt-1">
+            <BookOpen className="h-4 w-4 text-[#00d4ff]/60" />
           </div>
 
           <div className="flex-1 min-w-0">
-            <h3 className="text-base font-bold text-foreground leading-snug mb-2 hover:text-primary transition-colors">
+            <h3 className="text-base font-medium text-foreground/80 leading-snug mb-2 hover:text-foreground transition-colors">
               {pub.title}
             </h3>
 
-            <p className="text-sm text-muted-foreground mb-1 font-mono text-xs">{pub.authors}</p>
+            <p className="text-foreground/35 mb-1 font-mono text-xs">{pub.authors}</p>
 
             <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className="text-xs font-mono font-semibold text-primary">{pub.venue}</span>
-              <span className="text-muted-foreground text-xs">•</span>
-              <span className="text-xs text-muted-foreground">{pub.institution}</span>
-              <span className="text-muted-foreground text-xs">•</span>
-              <span className="text-xs text-muted-foreground font-mono">{pub.year}</span>
+              <span className="text-xs font-mono text-[#00d4ff]/60">{pub.venue}</span>
+              <span className="text-foreground/15 text-xs">•</span>
+              <span className="text-xs text-foreground/30">{pub.institution}</span>
+              <span className="text-foreground/15 text-xs">•</span>
+              <span className="text-xs text-foreground/25 font-mono">{pub.year}</span>
             </div>
 
             <AnimatePresence>
@@ -91,24 +91,23 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="bg-secondary/50 rounded-md p-4 mb-3 border border-border">
-                    <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-primary mb-2">Abstract</p>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{pub.abstract}</p>
+                  <div className="bg-foreground/[0.03] rounded p-4 mb-3 border border-foreground/[0.05]">
+                    <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00d4ff]/50 mb-2">Abstract</p>
+                    <p className="text-sm text-foreground/40 leading-relaxed">{pub.abstract}</p>
                   </div>
 
                   <div className="flex flex-wrap gap-1.5 mb-3">
                     {pub.keywords.map((kw) => (
-                      <span key={kw} className="px-2 py-0.5 text-[11px] font-mono rounded border border-border text-muted-foreground">
+                      <span key={kw} className="px-2 py-0.5 text-[11px] font-mono rounded border border-foreground/[0.06] text-foreground/30">
                         {kw}
                       </span>
                     ))}
                   </div>
 
-                  {/* Embedded PDF Preview */}
                   {pub.isPdf && (
-                    <div className="mb-3 rounded-md overflow-hidden border border-border bg-muted">
-                      <div className="flex items-center justify-between px-3 py-2 bg-secondary/80 border-b border-border">
-                        <span className="text-[10px] font-mono font-bold text-primary uppercase tracking-widest">Paper Preview</span>
+                    <div className="mb-3 rounded overflow-hidden border border-foreground/[0.06]">
+                      <div className="flex items-center px-3 py-2 bg-foreground/[0.03] border-b border-foreground/[0.05]">
+                        <span className="text-[10px] font-mono font-bold text-[#00d4ff]/50 uppercase tracking-widest">Paper Preview</span>
                       </div>
                       <iframe
                         src={pub.pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1"}
@@ -125,14 +124,13 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
             <div className="flex items-center gap-3 flex-wrap">
               <button
                 onClick={() => setExpanded(!expanded)}
-                className="flex items-center gap-1 text-sm font-mono text-primary hover:underline"
+                className="flex items-center gap-1 text-sm font-mono text-[#00d4ff]/50 hover:text-[#00d4ff] transition-colors"
               >
                 {expanded ? "collapse()" : "expand()"}
-                
               </button>
 
               {pub.isPdf && (
-                <Button variant="outline" size="sm" onClick={() => setPdfOpen(true)} className="text-xs font-mono border-primary/30 hover:border-primary/60">
+                <Button variant="outline" size="sm" onClick={() => setPdfOpen(true)} className="text-xs font-mono border-foreground/[0.08] hover:border-[#00d4ff]/30 text-foreground/40 hover:text-foreground/70 rounded-none h-7">
                   <Eye className="h-3 w-3 mr-1" />
                   Preview PDF
                 </Button>
@@ -144,12 +142,12 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
 
       {pub.isPdf && (
         <Dialog open={pdfOpen} onOpenChange={setPdfOpen}>
-          <DialogContent className="max-w-5xl max-h-[90vh]">
+          <DialogContent className="max-w-5xl max-h-[90vh] bg-[#0a0a14] border-foreground/10">
             <DialogHeader>
-              <DialogTitle className="text-sm pr-8 font-mono">{pub.title}</DialogTitle>
-              <DialogDescription className="font-mono text-xs">{pub.authors} — {pub.venue} {pub.year}</DialogDescription>
+              <DialogTitle className="text-sm pr-8 font-mono text-foreground/80">{pub.title}</DialogTitle>
+              <DialogDescription className="font-mono text-xs text-foreground/40">{pub.authors} — {pub.venue} {pub.year}</DialogDescription>
             </DialogHeader>
-            <div className="w-full h-[70vh] bg-muted rounded-md overflow-hidden border border-border">
+            <div className="w-full h-[70vh] rounded overflow-hidden border border-foreground/[0.06]">
               <iframe
                 src={pub.pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1"}
                 className="w-full h-full"
@@ -167,7 +165,6 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
 const Publications = () => {
   return (
     <section id="publications" className="section-padding relative">
-      <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -175,18 +172,19 @@ const Publications = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px flex-1 max-w-12 bg-primary/50" />
-            <h2 className="text-3xl md:text-4xl font-bold">
-              <span className="text-primary">Publications</span>
-            </h2>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="h-px w-12 bg-[#00d4ff]/30" />
+            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#00d4ff]/60">Research</span>
           </div>
-          <p className="text-muted-foreground mb-12 max-w-2xl text-sm">
+          <h2 className="text-3xl md:text-5xl font-light mb-4">
+            <span className="font-serif-display italic text-foreground/70">Publications</span>
+          </h2>
+          <p className="text-foreground/30 mb-12 max-w-2xl text-sm">
             Peer-reviewed research in driver safety systems, medical AI, computer vision, and intelligent systems.
           </p>
         </motion.div>
 
-        <div className="space-y-5">
+        <div className="space-y-4">
           {publications.map((pub, i) => (
             <PublicationCard key={pub.title} pub={pub} index={i} />
           ))}

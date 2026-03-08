@@ -5,37 +5,31 @@ const skillCategories = [
   {
     category: "Programming",
     icon: Code,
-    color: "neon-blue",
     skills: ["Python", "C++ (Basics)", "SQL", "MATLAB"],
   },
   {
     category: "AI / Computer Vision",
     icon: Brain,
-    color: "neon-purple",
     skills: ["PyTorch", "TensorFlow", "YOLO", "OpenCV", "Deep Learning", "CNNs", "NLP", "OCR", "Pandas", "NumPy", "Scikit-Learn"],
   },
   {
     category: "Robotics / Autonomous Systems",
     icon: Bot,
-    color: "neon-cyan",
     skills: ["ROS / ROS2", "SLAM", "Navigation Stack", "Sensor Fusion", "Path Planning", "LLMs", "Multi-Agent Systems"],
   },
   {
     category: "Automotive / Embedded",
     icon: Car,
-    color: "neon-orange",
     skills: ["TI Jacinto", "OpenVX", "Vision Apps", "TIDL", "Embedded Linux", "ESP32", "STM32", "Arduino", "NVIDIA Jetson", "PLCs"],
   },
   {
     category: "Tools & Platforms",
     icon: Wrench,
-    color: "neon-blue",
     skills: ["Git / GitHub", "Linux", "Docker", "Fusion 360", "Ansys", "UiPath RPA"],
   },
   {
     category: "Soft Skills",
     icon: Users,
-    color: "neon-purple",
     skills: ["Problem Solving", "Research & Innovation", "Adaptability", "Communication", "Team Work"],
   },
 ];
@@ -43,7 +37,6 @@ const skillCategories = [
 const Skills = () => {
   return (
     <section id="skills" className="section-padding relative">
-      <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,15 +44,16 @@ const Skills = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-8">
-            <div className="h-px flex-1 max-w-12 bg-primary/50" />
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Skills & <span className="text-primary">Tools</span>
-            </h2>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="h-px w-12 bg-[#00d4ff]/30" />
+            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#00d4ff]/60">Capabilities</span>
           </div>
+          <h2 className="text-3xl md:text-5xl font-light mb-12">
+            Skills & <span className="font-serif-display italic text-foreground/70">Tools</span>
+          </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {skillCategories.map((cat, i) => {
             const Icon = cat.icon;
             return (
@@ -68,20 +62,20 @@ const Skills = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-card/80 backdrop-blur-sm border border-border rounded-lg p-5 hover:border-primary/30 transition-all group hover:shadow-lg hover:shadow-primary/5"
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="bg-foreground/[0.02] border border-foreground/[0.06] rounded p-5 hover:border-[#00d4ff]/20 transition-all group"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="h-4 w-4 text-primary" />
+                  <div className="w-8 h-8 rounded border border-[#00d4ff]/15 bg-[#00d4ff]/5 flex items-center justify-center group-hover:border-[#00d4ff]/30 transition-colors">
+                    <Icon className="h-3.5 w-3.5 text-[#00d4ff]/70" />
                   </div>
-                  <h3 className="font-semibold text-foreground text-sm">{cat.category}</h3>
+                  <h3 className="font-medium text-foreground/70 text-sm">{cat.category}</h3>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {cat.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-2.5 py-1 text-xs font-mono font-medium rounded bg-secondary/80 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors border border-transparent hover:border-primary/20"
+                      className="px-2.5 py-1 text-[11px] font-mono rounded bg-foreground/[0.03] text-foreground/40 hover:text-[#00d4ff]/80 hover:bg-[#00d4ff]/5 transition-colors border border-transparent hover:border-[#00d4ff]/15"
                     >
                       {skill}
                     </span>

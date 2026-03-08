@@ -42,7 +42,6 @@ const experiences = [
 const Experience = () => {
   return (
     <section id="experience" className="section-padding relative">
-      <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,48 +49,49 @@ const Experience = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-12">
-            <div className="h-px flex-1 max-w-12 bg-primary/50" />
-            <h2 className="text-3xl md:text-4xl font-bold">
-              <span className="text-primary">Experience</span>
-            </h2>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="h-px w-12 bg-[#00d4ff]/30" />
+            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#00d4ff]/60">Career</span>
           </div>
+          <h2 className="text-3xl md:text-5xl font-light mb-12">
+            <span className="font-serif-display italic text-foreground/70">Experience</span>
+          </h2>
         </motion.div>
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-[19px] top-2 bottom-2 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent hidden md:block" />
+          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-[#00d4ff]/20 via-[#00d4ff]/10 to-transparent hidden md:block" />
 
-          <div className="space-y-10">
+          <div className="space-y-8">
             {experiences.map((exp, i) => (
               <motion.div
                 key={exp.org}
-                className="relative md:pl-14"
+                className="relative md:pl-12"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-[12px] top-1.5 w-4 h-4 rounded-full border-2 border-primary bg-background hidden md:block">
-                  <div className="absolute inset-0 rounded-full bg-primary/30 animate-ping" style={{ animationDuration: '3s' }} />
+                <div className="absolute left-0 top-2 w-[15px] h-[15px] rounded-full border border-[#00d4ff]/20 bg-[#030308] hidden md:flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#00d4ff]/40" />
                 </div>
 
-                <div className="bg-card/80 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all">
+                <div className="bg-foreground/[0.02] border border-foreground/[0.06] rounded p-6 hover:border-[#00d4ff]/15 transition-all">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
                     <div>
-                      <h3 className="text-lg font-bold text-foreground">{exp.org}</h3>
-                      <p className="text-sm text-primary font-medium font-mono">{exp.role}</p>
+                      <h3 className="text-base font-medium text-foreground/80">{exp.org}</h3>
+                      <p className="text-sm text-[#00d4ff]/60 font-mono text-xs mt-0.5">{exp.role}</p>
                     </div>
-                    <span className="text-xs text-muted-foreground mt-1 sm:mt-0 font-mono tracking-wide px-2 py-1 bg-secondary/50 rounded border border-border">
+                    <span className="text-[10px] text-foreground/25 mt-1 sm:mt-0 font-mono tracking-wider px-2 py-1 bg-foreground/[0.03] rounded border border-foreground/[0.05]">
                       {exp.period}
                     </span>
                   </div>
 
                   <ul className="space-y-2 mb-4">
                     {exp.points.map((point, j) => (
-                      <li key={j} className="text-sm text-muted-foreground flex gap-2">
-                        <span className="text-primary mt-0.5 flex-shrink-0 font-mono">→</span>
+                      <li key={j} className="text-sm text-foreground/40 flex gap-2">
+                        <span className="text-[#00d4ff]/30 mt-0.5 flex-shrink-0 font-mono">→</span>
                         <span>{point}</span>
                       </li>
                     ))}
@@ -99,7 +99,7 @@ const Experience = () => {
 
                   <div className="flex flex-wrap gap-1.5">
                     {exp.tech.map((t) => (
-                      <span key={t} className="px-2 py-0.5 text-[11px] font-mono font-medium rounded border border-border text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors">
+                      <span key={t} className="px-2 py-0.5 text-[11px] font-mono rounded border border-foreground/[0.06] text-foreground/30 hover:text-[#00d4ff]/60 hover:border-[#00d4ff]/15 transition-colors">
                         {t}
                       </span>
                     ))}
