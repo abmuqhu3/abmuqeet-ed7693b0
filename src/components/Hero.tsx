@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Mail, Linkedin, Github, ChevronRight } from "lucide-react";
+import { ArrowDown, FileText, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -8,42 +8,33 @@ const Hero = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const roles = [
-    "Autonomous Systems",
-    "Computer Vision",
-    "SLAM & Perception",
-    "ADAS Engineering",
-    "Deep Learning",
-  ];
-
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Grid background */}
-      <div className="absolute inset-0 grid-bg opacity-50" />
-      
+    <section id="home" className="relative min-h-[85vh] flex items-center overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+
       {/* Gradient orbs */}
       <motion.div
-        className="absolute top-20 right-1/4 w-96 h-96 rounded-full opacity-20 blur-3xl"
+        className="absolute top-10 right-1/4 w-72 h-72 rounded-full opacity-15 blur-3xl"
         style={{ background: "radial-gradient(circle, hsl(var(--neon-blue)), transparent)" }}
-        animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
+        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-20 left-1/4 w-72 h-72 rounded-full opacity-15 blur-3xl"
+        className="absolute bottom-10 left-1/4 w-56 h-56 rounded-full opacity-10 blur-3xl"
         style={{ background: "radial-gradient(circle, hsl(var(--neon-purple)), transparent)" }}
-        animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.2, 0.1] }}
+        animate={{ scale: [1, 1.3, 1], opacity: [0.08, 0.15, 0.08] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
 
-      <div className="section-container relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <div className="section-container relative z-10 w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Text content */}
           <motion.div
-            className="flex-1 space-y-6"
-            initial={{ opacity: 0, y: 40 }}
+            className="flex-1 space-y-5"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.6 }}
           >
-            {/* Status badge */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -51,61 +42,40 @@ const Hero = () => {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-xs font-mono text-primary">
-                Research Engineer
-              </span>
+              <span className="text-xs font-mono text-primary">Research Engineer</span>
             </motion.div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight tracking-tight">
-              Kalaigar{" "}
-              <span className="text-primary glow-text-blue">Abdul Muqeet</span>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight tracking-tight">
+              AI & Robotics{" "}
+              <span className="text-primary glow-text-blue">Systems Engineer</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed font-light">
-              AI / Robotics / Autonomous Systems Research Engineer working on perception systems, ADAS technologies, and intelligent vehicle platforms.
+            <p className="text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed font-light">
+              Building intelligent autonomous systems — perception, ADAS technologies, and next-gen vehicle platforms.
             </p>
 
-            {/* Animated role tags */}
-            <div className="flex flex-wrap gap-2 pt-2">
-              {roles.map((tag, i) => (
-                <motion.span
-                  key={tag}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5 + i * 0.1 }}
-                  className="px-3 py-1 text-xs font-mono font-medium rounded border border-primary/30 text-primary bg-primary/5 hover:bg-primary/10 transition-colors"
-                >
-                  {tag}
-                </motion.span>
-              ))}
-            </div>
+            {/* Glowing accent line */}
+            <div className="w-32 h-px bg-gradient-to-r from-primary via-accent to-transparent" />
 
-            <div className="flex flex-wrap gap-3 pt-4">
-              <Button onClick={() => scrollTo("projects")} className="group glow-blue">
-                View My Work
-                <ArrowDown className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Button onClick={() => scrollTo("projects")} className="group glow-blue font-mono text-xs">
+                <FolderOpen className="mr-2 h-4 w-4" />
+                View Projects
               </Button>
-              <Button variant="outline" onClick={() => scrollTo("contact")} className="border-primary/30 hover:border-primary/60">
-                Let's Connect
-                <ChevronRight className="ml-1 h-4 w-4" />
+              <Button variant="outline" onClick={() => scrollTo("publications")} className="border-primary/30 hover:border-primary/60 font-mono text-xs">
+                <BookOpen className="mr-2 h-4 w-4" />
+                Publications
               </Button>
-            </div>
-
-            <div className="flex gap-1 pt-2">
-              {[
-                { icon: Mail, href: "mailto:am586288@gmail.com", label: "Email" },
-                { icon: Linkedin, href: "https://linkedin.com/in/abdulmuqeet343", label: "LinkedIn" },
-                { icon: Github, href: "https://github.com/abmuqhu3", label: "GitHub" },
-              ].map(({ icon: Icon, href, label }) => (
-                <Button key={label} variant="ghost" size="icon" asChild className="text-muted-foreground hover:text-primary">
-                  <a href={href} target={href.startsWith("mailto") ? undefined : "_blank"} rel="noopener noreferrer" aria-label={label}>
-                    <Icon className="h-4 w-4" />
-                  </a>
-                </Button>
-              ))}
+              <Button variant="outline" asChild className="border-primary/30 hover:border-primary/60 font-mono text-xs">
+                <a href="/Abdul_Muqeet_Resume.pdf" download>
+                  <FileText className="mr-2 h-4 w-4" />
+                  Resume
+                </a>
+              </Button>
             </div>
           </motion.div>
 
+          {/* Circular profile image */}
           <motion.div
             className="flex-shrink-0"
             initial={{ opacity: 0, scale: 0.85 }}
@@ -113,16 +83,16 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
           >
             <div className="relative">
-              {/* Rotating ring */}
+              {/* Rotating rings */}
               <motion.div
-                className="absolute -inset-4 rounded-full border border-primary/20"
+                className="absolute -inset-5 rounded-full border border-primary/20"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
               >
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary glow-blue" />
               </motion.div>
               <motion.div
-                className="absolute -inset-8 rounded-full border border-accent/10"
+                className="absolute -inset-10 rounded-full border border-accent/10"
                 animate={{ rotate: -360 }}
                 transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
               >
@@ -130,18 +100,15 @@ const Hero = () => {
               </motion.div>
 
               <div className="absolute -inset-6 rounded-full bg-primary/5 blur-2xl" />
-              <Avatar className="w-52 h-52 lg:w-60 lg:h-60 border-2 border-primary/30 shadow-2xl relative glow-blue">
+              <Avatar className="w-44 h-44 lg:w-56 lg:h-56 border-2 border-primary/30 shadow-2xl relative glow-blue">
                 <AvatarImage src="/profile.jpg" alt="Kalaigar Abdul Muqeet" />
-                <AvatarFallback className="bg-card text-3xl font-bold text-primary font-mono">
-                  KAM
-                </AvatarFallback>
+                <AvatarFallback className="bg-card text-3xl font-bold text-primary font-mono">KAM</AvatarFallback>
               </Avatar>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Bottom circuit line */}
       <div className="absolute bottom-0 left-0 right-0 circuit-line" />
     </section>
   );
