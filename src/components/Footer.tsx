@@ -1,11 +1,10 @@
 const Footer = () => {
   return (
-    <footer className="border-t border-border/50 py-8 relative">
-      <div className="absolute inset-0 grid-bg opacity-20" />
+    <footer className="border-t border-foreground/5 py-8 relative">
       <div className="section-container relative z-10 text-center">
-        <p className="text-xs text-muted-foreground font-mono">
-          <span className="text-primary">©</span> {new Date().getFullYear()} Kalaigar Abdul Muqeet
-          <span className="mx-2 text-border">|</span>
+        <p className="text-[10px] text-foreground/20 font-mono tracking-wider">
+          <span className="text-[#00d4ff]/40">©</span> {new Date().getFullYear()} Kalaigar Abdul Muqeet
+          <span className="mx-3 text-foreground/10">|</span>
           Built with precision
         </p>
       </div>

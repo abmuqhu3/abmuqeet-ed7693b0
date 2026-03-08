@@ -90,25 +90,25 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
-      className={`bg-card/80 backdrop-blur-sm border rounded-lg overflow-hidden transition-all group hover:shadow-lg ${
+      transition={{ duration: 0.4, delay: index * 0.06 }}
+      className={`bg-foreground/[0.02] border rounded overflow-hidden transition-all group ${
         project.featured
-          ? "border-primary/40 hover:border-primary/60 hover:shadow-primary/10 md:col-span-2"
-          : "border-border hover:border-primary/30 hover:shadow-primary/5"
+          ? "border-[#00d4ff]/20 hover:border-[#00d4ff]/40 md:col-span-2"
+          : "border-foreground/[0.06] hover:border-[#00d4ff]/20"
       }`}
     >
       <div className="p-6">
         <div className="flex items-start gap-3 mb-3">
           {project.featured && (
-            <span className="flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest rounded bg-primary/10 text-primary border border-primary/20">
+            <span className="flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest rounded bg-[#00d4ff]/5 text-[#00d4ff]/70 border border-[#00d4ff]/15">
               <Star className="h-3 w-3" /> Featured
             </span>
           )}
         </div>
-        <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+        <h3 className="text-lg font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
           {project.title}
         </h3>
-        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+        <p className="text-sm text-foreground/40 mb-4 leading-relaxed">
           {project.description}
         </p>
 
@@ -121,15 +121,15 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+              <p className="text-sm text-foreground/40 mb-4 leading-relaxed">
                 {project.details}
               </p>
               <div className="mb-4">
-                <p className="text-[10px] font-mono font-bold text-primary mb-2 uppercase tracking-widest">Key Achievements</p>
+                <p className="text-[10px] font-mono font-bold text-[#00d4ff]/60 mb-2 uppercase tracking-widest">Key Achievements</p>
                 <ul className="space-y-1">
                   {project.achievements.map((a) => (
-                    <li key={a} className="text-sm text-muted-foreground flex gap-2">
-                      <span className="text-primary font-mono">→</span> {a}
+                    <li key={a} className="text-sm text-foreground/40 flex gap-2">
+                      <span className="text-[#00d4ff]/50 font-mono">→</span> {a}
                     </li>
                   ))}
                 </ul>
@@ -140,7 +140,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 
         <div className="flex flex-wrap gap-1.5 mb-4">
           {project.tech.map((t) => (
-            <span key={t} className="px-2 py-0.5 text-[11px] font-mono font-medium rounded border border-border text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors">
+            <span key={t} className="px-2 py-0.5 text-[11px] font-mono rounded border border-foreground/[0.06] text-foreground/35 hover:text-[#00d4ff]/70 hover:border-[#00d4ff]/20 transition-colors">
               {t}
             </span>
           ))}
@@ -149,7 +149,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         <div className="flex items-center gap-3">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="flex items-center gap-1 text-sm font-mono text-primary hover:underline"
+            className="flex items-center gap-1 text-sm font-mono text-[#00d4ff]/60 hover:text-[#00d4ff] transition-colors"
           >
             {expanded ? "collapse()" : "expand()"}
             <ChevronDown className={`h-3 w-3 transition-transform ${expanded ? "rotate-180" : ""}`} />
@@ -159,7 +159,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-sm font-mono text-muted-foreground hover:text-primary transition-colors"
+              className="flex items-center gap-1 text-sm font-mono text-foreground/30 hover:text-[#00d4ff]/70 transition-colors"
             >
               <ExternalLink className="h-3 w-3" />
               GitHub
@@ -174,7 +174,6 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 const Projects = () => {
   return (
     <section id="projects" className="section-padding relative">
-      <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -182,18 +181,19 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px flex-1 max-w-12 bg-primary/50" />
-            <h2 className="text-3xl md:text-4xl font-bold">
-              <span className="text-primary">Projects</span>
-            </h2>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="h-px w-12 bg-[#00d4ff]/30" />
+            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#00d4ff]/60">Portfolio</span>
           </div>
-          <p className="text-muted-foreground mb-12 max-w-2xl text-sm">
+          <h2 className="text-3xl md:text-5xl font-light mb-4">
+            <span className="font-serif-display italic text-foreground/70">Projects</span>
+          </h2>
+          <p className="text-foreground/35 mb-12 max-w-2xl text-sm">
             Research and engineering projects spanning robotics, autonomous systems, automotive perception, medical AI, and embedded systems.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-4">
           {projects.map((project, i) => (
             <ProjectCard key={project.title} project={project} index={i} />
           ))}

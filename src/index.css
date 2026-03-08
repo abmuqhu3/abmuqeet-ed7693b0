@@ -2,49 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
-    --foreground: 220 25% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 25% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 10%;
-    --primary: 195 100% 45%;
-    --primary-foreground: 220 30% 5%;
-    --secondary: 220 15% 93%;
-    --secondary-foreground: 220 25% 10%;
-    --muted: 220 15% 93%;
-    --muted-foreground: 220 10% 46%;
-    --accent: 170 80% 40%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
+    --background: 220 30% 6%;
+    --foreground: 195 20% 92%;
+    --card: 220 28% 9%;
+    --card-foreground: 195 20% 92%;
+    --popover: 220 28% 9%;
+    --popover-foreground: 195 20% 92%;
+    --primary: 195 100% 50%;
+    --primary-foreground: 220 30% 4%;
+    --secondary: 220 22% 13%;
+    --secondary-foreground: 195 20% 92%;
+    --muted: 220 22% 13%;
+    --muted-foreground: 215 15% 50%;
+    --accent: 170 80% 45%;
+    --accent-foreground: 220 30% 4%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
-    --ring: 195 100% 45%;
+    --border: 220 22% 16%;
+    --input: 220 22% 16%;
+    --ring: 195 100% 50%;
     --radius: 0.75rem;
 
-    --neon-blue: 195 100% 50%;
-    --neon-cyan: 180 100% 45%;
-    --neon-purple: 260 80% 60%;
-    --neon-orange: 25 95% 55%;
-    --grid-color: 220 15% 90%;
+    --neon-blue: 195 100% 55%;
+    --neon-cyan: 180 100% 50%;
+    --neon-purple: 260 80% 65%;
+    --neon-orange: 25 95% 60%;
+    --grid-color: 220 25% 12%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 220 28% 8%;
+    --sidebar-foreground: 195 20% 80%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 22% 12%;
+    --sidebar-accent-foreground: 195 20% 92%;
+    --sidebar-border: 220 22% 14%;
+    --sidebar-ring: 195 100% 50%;
 
-    --gradient-bg-1: 260 60% 30%;
-    --gradient-bg-2: 25 80% 40%;
-    --gradient-bg-3: 195 80% 25%;
+    --gradient-bg-1: 260 60% 15%;
+    --gradient-bg-2: 25 80% 20%;
+    --gradient-bg-3: 195 80% 12%;
   }
 
   .dark {
@@ -101,6 +101,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4 {
@@ -114,11 +115,11 @@
 
 @layer utilities {
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-28;
   }
 
   .section-container {
-    @apply px-6 md:px-8 max-w-full;
+    @apply px-6 md:px-10 max-w-7xl mx-auto;
   }
 
   .grid-bg {
@@ -173,6 +174,10 @@
     font-family: 'Orbitron', sans-serif;
   }
 
+  .font-serif-display {
+    font-family: 'Playfair Display', serif;
+  }
+
   .scanline {
     background: repeating-linear-gradient(
       0deg,
@@ -184,19 +189,11 @@
   }
 
   .page-gradient-bg {
-    background: 
-      radial-gradient(ellipse at 20% 20%, hsl(var(--gradient-bg-1) / 0.6) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 80%, hsl(var(--gradient-bg-2) / 0.4) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, hsl(var(--gradient-bg-3) / 0.3) 0%, transparent 60%),
-      hsl(220 20% 8%);
+    background: #030308;
   }
 
   .dark .page-gradient-bg {
-    background: 
-      radial-gradient(ellipse at 20% 20%, hsl(var(--gradient-bg-1) / 0.8) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 80%, hsl(var(--gradient-bg-2) / 0.5) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, hsl(var(--gradient-bg-3) / 0.4) 0%, transparent 60%),
-      hsl(220 30% 4%);
+    background: #030308;
   }
 
   .floating-card {
