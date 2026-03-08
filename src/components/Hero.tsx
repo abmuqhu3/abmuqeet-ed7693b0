@@ -1,11 +1,34 @@
 import { motion } from "framer-motion";
 import { FileText, BookOpen, FolderOpen, ChevronDown, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import RoboticArm3D from "@/components/RoboticArm3D";
 
 interface HeroProps {
   scrollProgress: number;
   onArmGrab?: (target: string) => void;
 }
+
+const DrawingText = ({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) => {
+  return (
+    <span className={className}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{
+            delay: delay + i * 0.08,
+            duration: 0.4,
+            ease: "easeOut",
+          }}
+          style={{ display: "inline-block", minWidth: char === " " ? "0.3em" : undefined }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
 
 const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
   const scrollTo = (id: string) => {
@@ -19,13 +42,18 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
 
   return (
     <section id="home" className="relative h-screen flex items-center overflow-hidden bg-[#030308]">
+      {/* 3D Robotic Arm Background */}
+      <div className="absolute inset-0 z-0">
+        <RoboticArm3D scrollProgress={scrollProgress} />
+      </div>
+
       {/* Vignette overlay */}
       <div className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background: `
             linear-gradient(to top, rgba(3,3,8,0.95) 0%, rgba(3,3,8,0.4) 30%, transparent 60%),
-            linear-gradient(to right, rgba(3,3,8,0.7) 0%, transparent 50%),
-            radial-gradient(ellipse at center, transparent 50%, rgba(3,3,8,0.5) 100%)
+            linear-gradient(to right, rgba(3,3,8,0.85) 0%, rgba(3,3,8,0.4) 40%, transparent 70%),
+            radial-gradient(ellipse at center, transparent 50%, rgba(3,3,8,0.6) 100%)
           `
         }}
       />
@@ -136,16 +164,33 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
           </p>
 
           <h1 className="text-[clamp(2.5rem,8vw,7rem)] font-light leading-[0.95] tracking-tight text-foreground/90 whitespace-nowrap">
-            <span className="italic font-serif font-light text-foreground/70">Research</span>{" "}
-            <span className="font-normal not-italic">Engineer</span>
+            <DrawingText
+              text="Research"
+              className="italic font-serif font-light text-foreground/70"
+              delay={1.2}
+            />{" "}
+            <DrawingText
+              text="Engineer"
+              className="font-normal not-italic"
+              delay={1.9}
+            />
           </h1>
+
+          {/* Underline animation */}
+          <motion.div
+            className="h-[2px] bg-gradient-to-r from-[#00d4ff]/60 via-[#00d4ff]/30 to-transparent mt-2"
+            initial={{ scaleX: 0, originX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 3, duration: 1.2, ease: "easeOut" }}
+            style={{ maxWidth: "400px" }}
+          />
 
           {/* Action buttons */}
           <motion.div
             className="flex flex-wrap gap-3 mt-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.6 }}
+            transition={{ delay: 3.5, duration: 0.6 }}
           >
             <Button
               onClick={() => handleNavClick("projects")}
@@ -184,7 +229,7 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
             className="flex items-center gap-6 mt-6 font-mono text-[10px] tracking-[0.2em] uppercase text-foreground/30"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.6 }}
+            transition={{ delay: 3.8, duration: 0.6 }}
           >
             <a href="https://linkedin.com/in/abdulmuqeet343" target="_blank" rel="noopener noreferrer" className="hover:text-[#00d4ff] transition-colors">LinkedIn</a>
             <a href="https://github.com/abmuqhu3" target="_blank" rel="noopener noreferrer" className="hover:text-[#00d4ff] transition-colors">GitHub</a>
