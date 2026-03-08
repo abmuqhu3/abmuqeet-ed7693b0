@@ -1,10 +1,22 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Award, BookOpen, Zap } from "lucide-react";
+import { GraduationCap, Award, BookOpen } from "lucide-react";
 
 const About = () => {
   return (
-    <section id="about" className="section-padding relative">
-      <div className="absolute inset-0 grid-bg opacity-30" />
+    <section id="about" className="section-padding relative overflow-hidden">
+      {/* Background image overlay - only visible at the top */}
+      <div
+        className="absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage: "url('/about-bg.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          maskImage: "linear-gradient(to bottom, black 0%, transparent 60%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 60%)",
+        }}
+      />
+      <div className="absolute inset-0 grid-bg opacity-20" />
+      
       <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

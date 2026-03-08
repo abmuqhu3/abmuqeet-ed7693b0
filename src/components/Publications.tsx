@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText, ChevronDown, Download, BookOpen, Eye } from "lucide-react";
+import { FileText, ChevronDown, BookOpen, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -17,7 +17,6 @@ const publications = [
     venue: "Conference Paper",
     institution: "TiHAN, IIT Hyderabad",
     year: "2025",
-    status: "Submitted",
     abstract:
       "We present DDAWS, a lightweight, camera-only framework that fuses per-driver adaptive calibration with six concurrent physiological cues — Eye Aspect Ratio (EAR), Mouth Aspect Ratio (MAR), PERCLOS, estimated Karolinska Sleepiness Scale (KSS), and 3-D head-pose yaw and pitch — under a two-tier hierarchical alert scheme with explicit state recovery. The pipeline runs on a standard CPU at under 5 ms per frame with no GPU and no pre-trained weights. Tested on 23 participants across 63,544 frames (35.3 min), DDAWS achieved a mean Detection Rate of 79.09%, Alert Precision of 72.09%, Gaze Consistency of 85.83%, and a Composite System Score of 69.67%.",
     keywords: ["Driver Drowsiness Detection", "PERCLOS", "Eye Aspect Ratio", "MediaPipe FaceMesh", "Karolinska Sleepiness Scale", "Adaptive Calibration", "Real-time Safety Systems"],
@@ -30,7 +29,6 @@ const publications = [
     venue: "RCAAI 2025",
     institution: "Taylor & Francis",
     year: "2025",
-    status: "Accepted",
     abstract:
       "Pneumonia remains a leading cause of death worldwide. This paper presents a U-Net model in conjunction with deep learning to automate classification and segmentation of diseased lung sections from X-ray images. The model is trained for pixel-wise segmentation, generating masks that accurately delineate lung regions affected by pneumonia. Performance metrics include Dice coefficient (0.76), IoU (0.62), and classification accuracy of 89%.",
     keywords: ["Deep Learning", "Image Segmentation", "U-Net Architecture", "Pixel-wise Segmentation"],
@@ -43,12 +41,11 @@ const publications = [
     venue: "RCAAI 2025",
     institution: "Taylor & Francis",
     year: "2025",
-    status: "Accepted",
     abstract:
       "This paper presents a web-based system that uses Google Vision API to extract medicine names, dosages, and frequencies from printed prescriptions. The system preprocesses prescription images with OpenCV, organizes extracted text with NLP and regex approaches. Features a pharmaceutical reminder system that alerts users about scheduled dosages and monitors medication supply.",
     keywords: ["Google Vision API", "OCR", "Prescription Recognition", "NLP", "Reinforcement Learning"],
-    pdfUrl: "/papers/ocr-prescription.docx",
-    isPdf: false,
+    pdfUrl: "/papers/ocr-prescription.pdf",
+    isPdf: true,
   },
 ];
 
@@ -83,9 +80,6 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
               <span className="text-xs text-muted-foreground">{pub.institution}</span>
               <span className="text-muted-foreground text-xs">•</span>
               <span className="text-xs text-muted-foreground font-mono">{pub.year}</span>
-              <span className="px-2 py-0.5 text-[10px] font-mono font-bold rounded bg-primary/10 text-primary border border-primary/20">
-                {pub.status}
-              </span>
             </div>
 
             <AnimatePresence>
@@ -117,9 +111,10 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
                         <span className="text-[10px] font-mono font-bold text-primary uppercase tracking-widest">Paper Preview</span>
                       </div>
                       <iframe
-                        src={pub.pdfUrl}
-                        className="w-full h-[400px]"
+                        src={pub.pdfUrl + "#toolbar=1&navpanes=0&scrollbar=1"}
+                        className="w-full h-[500px]"
                         title={`Preview: ${pub.title}`}
+                        style={{ border: "none" }}
                       />
                     </div>
                   )}
@@ -142,13 +137,6 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
                   Preview PDF
                 </Button>
               )}
-
-              <Button variant="outline" size="sm" asChild className="text-xs font-mono border-primary/30 hover:border-primary/60">
-                <a href={pub.pdfUrl} download>
-                  <Download className="h-3 w-3 mr-1" />
-                  Download
-                </a>
-              </Button>
             </div>
           </div>
         </div>
@@ -163,9 +151,10 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
             </DialogHeader>
             <div className="w-full h-[70vh] bg-muted rounded-md overflow-hidden border border-border">
               <iframe
-                src={pub.pdfUrl}
+                src={pub.pdfUrl + "#toolbar=1&navpanes=0&scrollbar=1"}
                 className="w-full h-full"
                 title={`Full Preview: ${pub.title}`}
+                style={{ border: "none" }}
               />
             </div>
           </DialogContent>

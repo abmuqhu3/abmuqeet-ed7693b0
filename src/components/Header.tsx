@@ -32,9 +32,9 @@ const Header = ({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean; toggleDar
   return (
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? "border-b border-border/40 bg-background/80 backdrop-blur-xl shadow-sm" : "bg-transparent"}`}>
       <div className="section-container flex h-14 items-center justify-between">
-        <a href="#home" onClick={(e) => scrollTo(e, "home")} className="font-bold text-sm tracking-wider uppercase text-foreground font-mono">
-          <span className="text-primary">KAM</span>
-          <span className="text-muted-foreground ml-1 hidden sm:inline">// Portfolio</span>
+        <a href="#home" onClick={(e) => scrollTo(e, "home")} className="font-bold text-sm tracking-widest uppercase text-foreground font-orbitron">
+          <span className="text-primary glow-text-blue">KAM</span>
+          <span className="text-muted-foreground ml-1 hidden sm:inline text-xs font-mono">// systems.portfolio</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-0.5">
