@@ -67,6 +67,7 @@ const projects = [
     tech: ["Python", "Pandas", "NumPy", "Data Visualization", "SQL"],
     achievements: ["12,000+ restaurants analyzed", "Multi-factor correlation analysis", "Customer behavior insights"],
     featured: false,
+    github: "",
   },
   {
     title: "Air Pollution Monitoring System with SMS Alerts",
