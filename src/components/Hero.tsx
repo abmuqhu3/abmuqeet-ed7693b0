@@ -50,7 +50,7 @@ const Hero = () => {
               transition={{ delay: 0.3 }}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm"
             >
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-xs font-mono text-primary">
                 Research Engineer
               </span>
