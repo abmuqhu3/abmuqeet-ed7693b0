@@ -23,6 +23,7 @@ const projects = [
     tech: ["ROS", "SLAM", "Sensor Fusion", "Python", "Multi-Agent Systems"],
     achievements: ["Real-time multi-robot coordination", "Decentralized obstacle avoidance", "Scalable swarm architecture"],
     featured: false,
+    github: "https://github.com/abmuqhu3/Swarm-Robots",
   },
   {
     title: "Driver Drowsiness & Attention Warning System (DDAWS)",
