@@ -111,7 +111,7 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
                         <span className="text-[10px] font-mono font-bold text-primary uppercase tracking-widest">Paper Preview</span>
                       </div>
                       <iframe
-                        src={pub.pdfUrl + "#toolbar=1&navpanes=0&scrollbar=1"}
+                        src={pub.pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1"}
                         className="w-full h-[500px]"
                         title={`Preview: ${pub.title}`}
                         style={{ border: "none" }}
