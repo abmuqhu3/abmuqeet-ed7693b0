@@ -11,11 +11,11 @@ const About = () => {
           backgroundImage: "url('/about-bg.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          filter: "blur(16px) brightness(0.15)",
+          filter: "blur(12px) brightness(0.3)",
           transform: "scale(1.1)",
         }}
       />
-      <div className="absolute inset-0 bg-[#030308]/70" />
+      <div className="absolute inset-0 bg-[#030308]/50" />
 
       <div className="relative z-10 section-padding">
         <div className="section-container">
