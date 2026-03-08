@@ -332,9 +332,9 @@ const RoboticArm3D = ({
 
         <ambientLight intensity={0.08} />
         <directionalLight position={[5, 8, 5]} intensity={1.2} color="#ffffff" castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} />
-        <directionalLight position={[-4, 3, -3]} intensity={0.4} color="#00d4ff" />
-        <pointLight position={[0, 6, 0]} intensity={0.6} color="#00d4ff" distance={15} decay={2} />
-        <pointLight position={[-3, 2, 3]} intensity={0.3} color="#7b61ff" distance={12} decay={2} />
+        <directionalLight position={[-4, 3, -3]} intensity={0.15} color="#00d4ff" />
+        <pointLight position={[0, 6, 0]} intensity={0.3} color="#00d4ff" distance={15} decay={2} />
+        <pointLight position={[-3, 2, 3]} intensity={0.12} color="#7b61ff" distance={12} decay={2} />
         <spotLight position={[3, 10, 5]} angle={0.25} penumbra={0.6} intensity={1.5} castShadow color="#ffffff" />
 
         <RoboticArmModel
