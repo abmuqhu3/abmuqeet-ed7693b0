@@ -60,7 +60,7 @@ const Hero = () => {
             </motion.p>
 
             <p className="text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed font-light">
-              Building intelligent autonomous systems — perception, ADAS technologies, and next-gen vehicle platforms.
+              Building intelligent autonomous systems — Robotics, AI/ML, Perception, ADAS technologies, and next-gen vehicle platforms.
             </p>
 
             {/* Glowing accent line */}
