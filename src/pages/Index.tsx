@@ -58,14 +58,18 @@ const Index = () => {
 
       {/* Main floating card container */}
       <div className="lg:p-6 lg:min-h-screen lg:flex lg:items-stretch">
-        <div className="floating-card lg:flex lg:w-full lg:max-w-[1400px] lg:mx-auto overflow-hidden lg:min-h-[calc(100vh-48px)]">
+        <div className="floating-card lg:flex lg:w-full lg:max-w-[1400px] lg:mx-auto overflow-hidden lg:min-h-[calc(100vh-48px)] relative">
           {/* Left sidebar */}
           <PortfolioSidebar activeSection={activeSection} />
 
           {/* Right main content */}
-          <div className="flex-1 overflow-y-auto relative">
+          <div id="main-scroll-container" className="flex-1 overflow-y-auto relative">
             {/* Top bar with dark mode toggle (desktop) */}
             <div className="hidden lg:flex items-center justify-between px-6 py-3 border-b border-border/30 sticky top-0 z-20 bg-card/90 backdrop-blur-xl">
+              <div className="flex items-center gap-2">
+                <span className="font-orbitron text-sm font-bold text-primary">Abdul</span>
+                <span className="font-orbitron text-sm font-bold text-foreground">Muqeet</span>
+              </div>
               <div className="flex items-center gap-4">
                 {["Home", "About", "Projects", "Publications", "Contact"].map((item) => (
                   <a

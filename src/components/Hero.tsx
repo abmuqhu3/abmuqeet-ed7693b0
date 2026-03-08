@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, FileText, BookOpen, FolderOpen } from "lucide-react";
+import { FileText, BookOpen, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -35,20 +35,29 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <motion.div
+            <motion.p
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm"
+              transition={{ delay: 0.2 }}
+              className="text-sm md:text-base font-mono text-muted-foreground tracking-widest uppercase"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-xs font-mono text-primary">Research Engineer</span>
-            </motion.div>
+              Hi, I am
+            </motion.p>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight tracking-tight">
-              AI & Robotics{" "}
-              <span className="text-primary glow-text-blue">Systems Engineer</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight tracking-tight">
+              Kalaigar Abdul{" "}
+              <span className="text-primary glow-text-blue">Muqeet</span>
             </h1>
+
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+              className="text-lg md:text-xl lg:text-2xl font-semibold text-primary/80 tracking-wide"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse inline-block mr-3" />
+              Research Engineer
+            </motion.p>
 
             <p className="text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed font-light">
               Building intelligent autonomous systems — perception, ADAS technologies, and next-gen vehicle platforms.
@@ -83,7 +92,6 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
           >
             <div className="relative">
-              {/* Rotating rings */}
               <motion.div
                 className="absolute -inset-5 rounded-full border border-primary/20"
                 animate={{ rotate: 360 }}
@@ -102,7 +110,7 @@ const Hero = () => {
               <div className="absolute -inset-6 rounded-full bg-primary/5 blur-2xl" />
               <Avatar className="w-44 h-44 lg:w-56 lg:h-56 border-2 border-primary/30 shadow-2xl relative glow-blue">
                 <AvatarImage src="/profile.jpg" alt="Kalaigar Abdul Muqeet" />
-                <AvatarFallback className="bg-card text-3xl font-bold text-primary font-mono">KAM</AvatarFallback>
+                <AvatarFallback className="bg-card text-3xl font-bold text-primary font-mono">AM</AvatarFallback>
               </Avatar>
             </div>
           </motion.div>
