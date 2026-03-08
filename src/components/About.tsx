@@ -9,10 +9,11 @@ const About = () => {
         className="absolute inset-0"
         style={{
           backgroundImage: "url('/about-bg.jpg')",
-          backgroundSize: "cover",
+          backgroundSize: "contain",
           backgroundPosition: "center",
-          filter: "blur(12px) brightness(0.3)",
-          transform: "scale(1.1)",
+          backgroundRepeat: "no-repeat",
+          filter: "blur(4px) brightness(0.3)",
+          transform: "scale(1)",
         }}
       />
       <div className="absolute inset-0 bg-[#030308]/50" />
