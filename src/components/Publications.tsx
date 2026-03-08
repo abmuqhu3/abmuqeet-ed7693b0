@@ -151,7 +151,7 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
             </DialogHeader>
             <div className="w-full h-[70vh] bg-muted rounded-md overflow-hidden border border-border">
               <iframe
-                src={pub.pdfUrl + "#toolbar=1&navpanes=0&scrollbar=1"}
+                src={pub.pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1"}
                 className="w-full h-full"
                 title={`Full Preview: ${pub.title}`}
                 style={{ border: "none" }}
