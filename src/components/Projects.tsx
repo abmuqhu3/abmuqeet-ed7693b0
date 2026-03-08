@@ -45,6 +45,7 @@ const projects = [
     tech: ["Google Vision API", "React.js", "OpenCV", "NLP", "Python"],
     achievements: ["Automated medicine extraction", "Pharmaceutical reminder system", "Published at RCAAI 2025"],
     featured: false,
+    github: "https://github.com/abmuqhu3/MedAI",
   },
   {
     title: "Pneumonia Classification & Segmentation using U-Net",
