@@ -28,7 +28,7 @@ const publications = [
     authors: "Kalaigar Abdul Muqeet, Kiran MC, Vasanthakumar GU",
     venue: "RCAAI 2025",
     institution: "Taylor & Francis",
-    year: "2025",
+    year: "2026",
     abstract:
       "Pneumonia remains a leading cause of death worldwide. This paper presents a U-Net model in conjunction with deep learning to automate classification and segmentation of diseased lung sections from X-ray images. The model is trained for pixel-wise segmentation, generating masks that accurately delineate lung regions affected by pneumonia. Performance metrics include Dice coefficient (0.76), IoU (0.62), and classification accuracy of 89%.",
     keywords: ["Deep Learning", "Image Segmentation", "U-Net Architecture", "Pixel-wise Segmentation"],
