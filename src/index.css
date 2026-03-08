@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 40 20% 98%;
+    --background: 220 20% 97%;
     --foreground: 220 25% 10%;
 
     --card: 0 0% 100%;
@@ -15,26 +15,32 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 25% 10%;
 
-    --primary: 220 60% 45%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 200 100% 50%;
+    --primary-foreground: 220 30% 5%;
 
-    --secondary: 220 15% 94%;
+    --secondary: 220 15% 93%;
     --secondary-foreground: 220 25% 10%;
 
-    --muted: 220 15% 94%;
+    --muted: 220 15% 93%;
     --muted-foreground: 220 10% 46%;
 
-    --accent: 165 50% 42%;
+    --accent: 270 70% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 220 60% 45%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 200 100% 50%;
 
     --radius: 0.5rem;
+
+    --neon-blue: 200 100% 50%;
+    --neon-cyan: 180 100% 45%;
+    --neon-purple: 270 70% 60%;
+    --neon-orange: 25 95% 55%;
+    --grid-color: 220 15% 90%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -47,33 +53,39 @@
   }
 
   .dark {
-    --background: 222 30% 7%;
+    --background: 222 30% 6%;
     --foreground: 210 20% 92%;
 
-    --card: 222 25% 10%;
+    --card: 222 25% 9%;
     --card-foreground: 210 20% 92%;
 
-    --popover: 222 25% 10%;
+    --popover: 222 25% 9%;
     --popover-foreground: 210 20% 92%;
 
-    --primary: 215 70% 60%;
-    --primary-foreground: 222 30% 7%;
+    --primary: 200 100% 50%;
+    --primary-foreground: 222 30% 5%;
 
-    --secondary: 220 20% 15%;
+    --secondary: 220 20% 13%;
     --secondary-foreground: 210 20% 92%;
 
-    --muted: 220 20% 15%;
-    --muted-foreground: 215 15% 60%;
+    --muted: 220 20% 13%;
+    --muted-foreground: 215 15% 55%;
 
-    --accent: 165 50% 50%;
-    --accent-foreground: 222 30% 7%;
+    --accent: 270 70% 65%;
+    --accent-foreground: 222 30% 5%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 215 70% 60%;
+    --border: 220 20% 16%;
+    --input: 220 20% 16%;
+    --ring: 200 100% 50%;
+
+    --neon-blue: 200 100% 55%;
+    --neon-cyan: 180 100% 50%;
+    --neon-purple: 270 70% 65%;
+    --neon-orange: 25 95% 60%;
+    --grid-color: 220 20% 12%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -97,7 +109,7 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Space Grotesk', sans-serif;
   }
 
   code, pre {
@@ -112,5 +124,29 @@
 
   .section-container {
     @apply container mx-auto px-4 md:px-6 max-w-6xl;
+  }
+
+  .grid-bg {
+    background-image: 
+      linear-gradient(hsl(var(--grid-color) / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-color) / 0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px hsl(var(--neon-blue) / 0.3), 0 0 40px hsl(var(--neon-blue) / 0.1);
+  }
+
+  .glow-text-blue {
+    text-shadow: 0 0 20px hsl(var(--neon-blue) / 0.5);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.3), 0 0 40px hsl(var(--neon-purple) / 0.1);
+  }
+
+  .circuit-line {
+    background: linear-gradient(90deg, transparent, hsl(var(--neon-blue) / 0.3), transparent);
+    height: 1px;
   }
 }
