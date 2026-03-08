@@ -40,7 +40,7 @@ const publications = [
     authors: "Kalaigar Abdul Muqeet, Kiran MC, Vasanthakumar GU",
     venue: "RCAAI 2025",
     institution: "Taylor & Francis",
-    year: "2025",
+    year: "2026",
     abstract:
       "This paper presents a web-based system that uses Google Vision API to extract medicine names, dosages, and frequencies from printed prescriptions. The system preprocesses prescription images with OpenCV, organizes extracted text with NLP and regex approaches. Features a pharmaceutical reminder system that alerts users about scheduled dosages and monitors medication supply.",
     keywords: ["Google Vision API", "OCR", "Prescription Recognition", "NLP", "Reinforcement Learning"],
