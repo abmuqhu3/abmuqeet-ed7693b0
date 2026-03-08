@@ -128,8 +128,9 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
           transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
         >
           <p className="text-xs md:text-sm text-foreground/40 leading-relaxed font-light italic mb-4 max-w-md">
-            AI-Driven Autonomous Systems for Precision, Intelligence, and{" "}
-            <span className="text-foreground/80 not-italic font-medium">Adaptability</span>
+            Building intelligent autonomous systems — Robotics, AI/ML, Perception,{" "}
+            <span className="text-foreground/80 not-italic font-medium">ADAS</span> technologies, and{" "}
+            <span className="text-[#00d4ff]/70 not-italic font-medium">next-gen vehicle platforms</span>.
           </p>
 
           <h1 className="text-[clamp(2.5rem,8vw,7rem)] font-light leading-[0.95] tracking-tight text-foreground/90">
