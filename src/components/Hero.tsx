@@ -99,12 +99,14 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
           {/* Name */}
           <div className="text-center md:text-left">
             <motion.h2
-              className="text-lg md:text-xl font-orbitron tracking-[0.15em] text-foreground/90"
+              className="text-lg md:text-xl tracking-[0.15em] text-foreground/90"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
             >
-              KALAIGAR ABDUL MUQEET
+              <span className="font-orbitron font-light text-foreground/60">KALAIGAR </span>
+              <span className="font-orbitron font-light text-foreground/60">ABDUL </span>
+              <span className="font-orbitron font-bold text-[#00d4ff] drop-shadow-[0_0_8px_rgba(0,212,255,0.4)]">MUQEET</span>
             </motion.h2>
             <motion.div
               className="flex items-center gap-2 mt-2 justify-center md:justify-start"
