@@ -3,7 +3,7 @@ import { Download, FileText, Award, Briefcase, GraduationCap } from "lucide-reac
 import { Button } from "@/components/ui/button";
 
 const highlights = [
-  { icon: Briefcase, label: "R&D at TiHAN, IIT Hyderabad" },
+  { icon: Briefcase, label: "Research Engineer at TiHAN, IIT Hyderabad" },
   { icon: GraduationCap, label: "M.Tech Robotics & AI — CGPA 8.21" },
   { icon: FileText, label: "3 Publications — RCAAI 2025 & DDAWS Conference" },
   { icon: Award, label: "Smart India Hackathon 2024 • IEEE RAS Summit" },
@@ -75,9 +75,10 @@ const ResumeSection = () => {
             </div>
             <div className="aspect-[3/4] bg-muted">
               <iframe
-                src="/Abdul_Muqeet_Resume.pdf"
+                src={"/Abdul_Muqeet_Resume.pdf#toolbar=1&navpanes=0&scrollbar=1"}
                 className="w-full h-full"
                 title="Resume Preview"
+                style={{ border: "none" }}
               />
             </div>
           </motion.div>
