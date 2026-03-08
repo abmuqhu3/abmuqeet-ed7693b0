@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Star } from "lucide-react";
+import { ChevronDown, Star, ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -12,6 +12,7 @@ const projects = [
     tech: ["TI Jacinto", "OpenVX", "Vision Apps", "TIDL", "Embedded Linux", "Sensor Processing", "ADAS"],
     achievements: ["Automotive-grade perception pipeline", "Real-time embedded deployment", "Multi-sensor fusion architecture"],
     featured: true,
+    github: "",
   },
   {
     title: "Decentralized Navigation & Obstacle Avoidance for Swarm Robots",
