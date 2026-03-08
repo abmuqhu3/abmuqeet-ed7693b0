@@ -1,58 +1,84 @@
+import { motion } from "framer-motion";
+import { Code, Brain, Cpu, Wrench, Bot, Users } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
-
-const skillGroups = [
+const skillCategories = [
   {
     category: "Programming",
-    skills: ["Python", "R", "SQL"],
-    color: "bg-blue-500/10 text-blue-700 dark:text-blue-300"
+    icon: Code,
+    skills: ["Python", "C++ (Basics)", "SQL"],
   },
   {
-    category: "Robotics Tools",
-    skills: ["ROS2", "STM32CubeIDE", "Arduino IDE", "Fusion 360", "MATLAB"],
-    color: "bg-purple-500/10 text-purple-700 dark:text-purple-300"
+    category: "AI / Machine Learning",
+    icon: Brain,
+    skills: ["OpenCV", "OCR", "Deep Learning (CNNs)", "NLP", "Pandas", "NumPy", "Scikit-Learn", "TensorFlow", "PyTorch"],
   },
   {
-    category: "AI/ML",
-    skills: ["SLAM", "Path Planning", "Computer Vision", "RL", "Image Processing"],
-    color: "bg-green-500/10 text-green-700 dark:text-green-300"
+    category: "Robotics / Autonomous Systems",
+    icon: Bot,
+    skills: ["ROS / ROS2", "SLAM", "Navigation Stack", "LLMs", "Sensor Fusion", "Path Planning"],
   },
   {
-    category: "Automation",
-    skills: ["UiPath", "Firebase", "Google Vision API"],
-    color: "bg-orange-500/10 text-orange-700 dark:text-orange-300"
+    category: "Embedded Systems",
+    icon: Cpu,
+    skills: ["ESP32", "STM32", "Arduino", "NVIDIA Jetson", "PLCs", "Microcontrollers"],
+  },
+  {
+    category: "Tools & Platforms",
+    icon: Wrench,
+    skills: ["Git / GitHub", "Linux", "Docker", "Fusion 360", "Ansys", "UiPath RPA", "MATLAB"],
   },
   {
     category: "Soft Skills",
-    skills: ["Problem Solving", "Adaptability", "Team Work"],
-    color: "bg-teal-500/10 text-teal-700 dark:text-teal-300"
-  }
+    icon: Users,
+    skills: ["Problem Solving", "Research & Innovation", "Adaptability", "Communication", "Team Work"],
+  },
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 bg-secondary/10">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Skills</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillGroups.map((group) => (
-            <Card key={group.category} className="border-none shadow-md bg-card/80 backdrop-blur-sm">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-4">{group.category}</h3>
+    <section id="skills" className="section-padding bg-secondary/30">
+      <div className="section-container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-2">Skills & Tools</h2>
+          <div className="h-1 w-16 bg-primary mb-12" />
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillCategories.map((cat, i) => {
+            const Icon = cat.icon;
+            return (
+              <motion.div
+                key={cat.category}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Icon className="h-4 w-4 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-foreground">{cat.category}</h3>
+                </div>
                 <div className="flex flex-wrap gap-2">
-                  {group.skills.map((skill) => (
-                    <span 
+                  {cat.skills.map((skill) => (
+                    <span
                       key={skill}
-                      className={`px-3 py-1 rounded-full text-sm ${group.color}`}
+                      className="px-2.5 py-1 text-xs font-medium rounded-md bg-secondary text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

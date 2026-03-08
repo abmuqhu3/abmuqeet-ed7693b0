@@ -1,129 +1,143 @@
-
-import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { 
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
-const projectData = [
+const projects = [
   {
-    id: 1,
-    title: "Decentralized Collision Free Path Planning for Swarm Robots",
-    description: "Autonomous floor-cleaning swarm robots using ORCA and RL. Modular hardware with brush and water-dispensing mechanisms.",
-    tags: ["Robotics", "AI", "ROS2"],
-    color: "from-blue-500/20 to-purple-500/20"
+    title: "Decentralized Navigation & Obstacle Avoidance for Swarm Robots",
+    description:
+      "Developed a decentralized multi-robot navigation system with a master–slave framework, where follower robots autonomously tracked and followed a teleoperated master robot in real time.",
+    details:
+      "Implemented autonomous obstacle avoidance, localization, and path coordination using ROS navigation stack, TF transforms, and sensor fusion. Optimized swarm behavior to achieve reliable real-time following, cooperative movement, and scalability in multi-robot setups.",
+    tech: ["ROS", "SLAM", "Sensor Fusion", "Python", "Multi-Agent Systems"],
+    achievements: ["Real-time multi-robot coordination", "Decentralized obstacle avoidance", "Scalable swarm architecture"],
   },
   {
-    id: 2,
-    title: "Automated Extraction of Medicine Details from Prescriptions (OCR)",
-    description: "Full-stack web app using Google Vision API and custom ML models for medicine data extraction from printed prescriptions.",
-    tags: ["OCR", "ML", "Web App"],
-    color: "from-green-500/20 to-blue-500/20"
+    title: "OCR-Assisted Automated Medication Prescription Reader",
+    description:
+      "Full-stack web application to automatically extract structured medicine data from printed prescriptions using Google Vision API.",
+    details:
+      "Integrated Google Vision API for initial text detection and trained ML models to improve accuracy of handwritten and printed text recognition. Features a pharmaceutical reminder system that alerts users about scheduled dosages and monitors medication supply.",
+    tech: ["Google Vision API", "React.js", "OpenCV", "NLP", "Python"],
+    achievements: ["Automated medicine extraction", "Pharmaceutical reminder system", "Published at RCAAI 2025"],
   },
   {
-    id: 3,
-    title: "Pneumonia Detection with CNN and Segmentation",
-    description: "Deep learning model to detect pneumonia from X-ray images with high accuracy using convolutional neural networks.",
-    tags: ["CNN", "Healthcare", "AI"],
-    color: "from-orange-500/20 to-red-500/20"
+    title: "Pneumonia Classification & Segmentation using U-Net",
+    description:
+      "Deep learning diagnostic system to classify chest X-ray images into normal and pneumonia-affected categories with 89% classification accuracy.",
+    details:
+      "Trained and fine-tuned CNN architectures for medical image classification. Implemented U-Net segmentation to isolate infected lung regions with Dice coefficient of 0.76 and IoU of 0.62.",
+    tech: ["U-Net", "CNN", "TensorFlow", "Medical Imaging", "Python"],
+    achievements: ["89% classification accuracy", "U-Net pixel-wise segmentation", "Published at RCAAI 2025"],
   },
   {
-    id: 4,
-    title: "Zomato Data Analysis",
-    description: "Comprehensive analysis of Zomato restaurant data to identify trends and patterns in customer preferences and ratings.",
-    tags: ["Data Analysis", "Python", "Visualization"],
-    color: "from-red-500/20 to-orange-500/20"
+    title: "Zomato Restaurant Data Analysis",
+    description:
+      "Exploratory data analysis on 12,000+ restaurants in Bengaluru to identify key factors influencing ratings, popularity, and customer preferences.",
+    details:
+      "Analyzed cuisine type, location, average cost, delivery options, and online presence to determine impact on customer engagement. Generated actionable insights through comprehensive statistical analysis and visualization.",
+    tech: ["Python", "Pandas", "NumPy", "Data Visualization", "SQL"],
+    achievements: ["12,000+ restaurants analyzed", "Multi-factor correlation analysis", "Customer behavior insights"],
   },
   {
-    id: 5,
     title: "Air Pollution Monitoring System with SMS Alerts",
-    description: "IoT-based system that monitors air quality and sends SMS alerts when pollution levels exceed defined thresholds.",
-    tags: ["IoT", "Embedded", "SMS"],
-    color: "from-teal-500/20 to-green-500/20"
-  }
+    description:
+      "Real-time air quality monitoring system using gas sensors to measure pollutants like CO₂ and CO with automated SMS alert notifications.",
+    details:
+      "Developed embedded software for continuous data acquisition and sensor calibration using microcontrollers. System triggers SMS alerts when pollution levels exceed defined thresholds.",
+    tech: ["Embedded C", "IoT", "Gas Sensors", "SMS API", "Microcontrollers"],
+    achievements: ["Real-time monitoring", "Automated threshold alerts", "Embedded sensor calibration"],
+  },
 ];
+
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-md transition-all group"
+    >
+      <div className="p-6">
+        <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+          {project.title}
+        </h3>
+        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+          {project.description}
+        </p>
+
+        <AnimatePresence>
+          {expanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                {project.details}
+              </p>
+              <div className="mb-4">
+                <p className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">Key Achievements</p>
+                <ul className="space-y-1">
+                  {project.achievements.map((a) => (
+                    <li key={a} className="text-sm text-muted-foreground flex gap-2">
+                      <span className="text-accent">✓</span> {a}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {project.tech.map((t) => (
+            <span key={t} className="px-2 py-0.5 text-xs font-medium rounded border border-border text-muted-foreground">
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="flex items-center gap-1 text-sm text-primary hover:underline"
+        >
+          {expanded ? "Show less" : "View details"}
+          <ChevronDown className={`h-3 w-3 transition-transform ${expanded ? "rotate-180" : ""}`} />
+        </button>
+      </div>
+    </motion.div>
+  );
+};
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-gradient-to-br from-background to-secondary/5">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Portfolio</h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto">
-          Showcasing my work in robotics, AI, and embedded systems through these key projects
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {projectData.slice(0, 2).map((project) => (
-            <Card 
-              key={project.id}
-              className="border-none overflow-hidden shadow-lg hover:shadow-xl transition-all"
-            >
-              <div className={`h-3 bg-gradient-to-r ${project.color}`} />
-              <CardContent className="p-8">
-                <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                <p className="text-muted-foreground mb-4">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
-                    <span 
-                      key={tag} 
-                      className="px-3 py-1 bg-secondary/50 rounded-full text-xs font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                
-                <Button variant="outline" className="group w-full" size="sm">
-                  View Details
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </CardContent>
-            </Card>
+    <section id="projects" className="section-padding bg-secondary/30">
+      <div className="section-container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-2">Projects</h2>
+          <div className="h-1 w-16 bg-primary mb-4" />
+          <p className="text-muted-foreground mb-12 max-w-2xl">
+            Research and engineering projects spanning robotics, autonomous systems, medical AI, and embedded systems.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects.map((project, i) => (
+            <ProjectCard key={project.title} project={project} index={i} />
           ))}
         </div>
-        
-        <h3 className="text-xl font-medium mb-6 text-center">Additional Projects</h3>
-        
-        <Carousel className="w-full max-w-4xl mx-auto">
-          <CarouselContent>
-            {projectData.slice(2).map((project) => (
-              <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
-                <Card className="border-none h-full overflow-hidden shadow-lg">
-                  <div className={`h-2 bg-gradient-to-r ${project.color}`} />
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-medium mb-2 line-clamp-1">{project.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{project.description}</p>
-                    
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {project.tags.slice(0, 2).map((tag) => (
-                        <span 
-                          key={tag} 
-                          className="px-2 py-0.5 bg-secondary/50 rounded-full text-xs font-medium"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    <Button variant="ghost" className="w-full text-sm" size="sm">
-                      View Details
-                    </Button>
-                  </CardContent>
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="flex justify-center gap-2 mt-4">
-            <CarouselPrevious className="static flex relative translate-y-0" />
-            <CarouselNext className="static flex relative translate-y-0" />
-          </div>
-        </Carousel>
       </div>
     </section>
   );
