@@ -29,9 +29,9 @@ const MobileNav = ({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean; toggle
       <div className="sticky top-0 z-50 flex items-center justify-between px-4 py-3 bg-card/90 backdrop-blur-xl border-b border-border/30">
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
-            <span className="font-orbitron text-xs font-bold text-primary">K</span>
+            <span className="font-orbitron text-xs font-bold text-primary">A</span>
           </div>
-          <span className="font-orbitron text-sm font-bold text-foreground">KAM</span>
+          <span className="font-orbitron text-sm font-bold text-foreground">Abdul Muqeet</span>
         </div>
         <div className="flex items-center gap-1">
           <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="text-muted-foreground h-8 w-8">
