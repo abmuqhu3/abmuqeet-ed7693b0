@@ -32,8 +32,8 @@ const publications = [
     abstract:
       "Pneumonia remains a leading cause of death worldwide. This paper presents a U-Net model in conjunction with deep learning to automate classification and segmentation of diseased lung sections from X-ray images. The model is trained for pixel-wise segmentation, generating masks that accurately delineate lung regions affected by pneumonia. Performance metrics include Dice coefficient (0.76), IoU (0.62), and classification accuracy of 89%.",
     keywords: ["Deep Learning", "Image Segmentation", "U-Net Architecture", "Pixel-wise Segmentation"],
-    pdfUrl: "/papers/pneumonia-unet.docx",
-    isPdf: false,
+    pdfUrl: "/papers/pneumonia-unet.pdf",
+    isPdf: true,
   },
   {
     title: "Optical Character Recognition Assisted Automated Medication Prescription Reader System",

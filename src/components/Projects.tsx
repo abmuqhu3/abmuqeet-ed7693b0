@@ -146,13 +146,26 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           ))}
         </div>
 
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1 text-sm font-mono text-primary hover:underline"
-        >
-          {expanded ? "collapse()" : "expand()"}
-          <ChevronDown className={`h-3 w-3 transition-transform ${expanded ? "rotate-180" : ""}`} />
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="flex items-center gap-1 text-sm font-mono text-primary hover:underline"
+          >
+            {expanded ? "collapse()" : "expand()"}
+            <ChevronDown className={`h-3 w-3 transition-transform ${expanded ? "rotate-180" : ""}`} />
+          </button>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-sm font-mono text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ExternalLink className="h-3 w-3" />
+              GitHub
+            </a>
+          )}
+        </div>
       </div>
     </motion.div>
   );
