@@ -1,19 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Publications", href: "#publications" },
-  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
   { label: "Resume", href: "#resume" },
   { label: "Contact", href: "#contact" },
 ];
 
 const Header = ({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean; toggleDarkMode: () => void }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
 
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -22,56 +30,58 @@ const Header = ({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean; toggleDar
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/90 backdrop-blur-md">
+    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? "border-b border-border/40 bg-background/80 backdrop-blur-xl shadow-sm" : "bg-transparent"}`}>
       <div className="section-container flex h-14 items-center justify-between">
-        <a href="#home" onClick={(e) => scrollTo(e, "home")} className="font-semibold text-sm tracking-wide uppercase text-foreground">
-          K. Abdul Muqeet
+        <a href="#home" onClick={(e) => scrollTo(e, "home")} className="font-bold text-sm tracking-wider uppercase text-foreground font-mono">
+          <span className="text-primary">KAM</span>
+          <span className="text-muted-foreground ml-1 hidden sm:inline">// Portfolio</span>
         </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-0.5">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => scrollTo(e, link.href.slice(1))}
-              className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary/50"
+              className="px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors rounded-md hover:bg-primary/5 font-mono tracking-wide"
             >
               {link.label}
             </a>
           ))}
-          <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="ml-2">
+          <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="ml-2 text-muted-foreground hover:text-primary">
             {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
         </nav>
 
-        {/* Mobile controls */}
-        <div className="flex md:hidden items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
+        <div className="flex md:hidden items-center gap-1">
+          <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="text-muted-foreground">
             {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
-          <Button variant="ghost" size="icon" onClick={() => setMobileOpen(!mobileOpen)}>
+          <Button variant="ghost" size="icon" onClick={() => setMobileOpen(!mobileOpen)} className="text-muted-foreground">
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-md">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-xl"
+        >
           <nav className="section-container py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => scrollTo(e, link.href.slice(1))}
-                className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary/50"
+                className="px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors rounded-md hover:bg-primary/5 font-mono"
               >
                 {link.label}
               </a>
             ))}
           </nav>
-        </div>
+        </motion.div>
       )}
     </header>
   );
