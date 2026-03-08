@@ -79,7 +79,7 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
               <img
                 src="/profile.jpg"
                 alt="Kalaigar Abdul Muqeet"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover scale-x-[-1]"
               />
             </motion.div>
             {/* Orbit ring */}
