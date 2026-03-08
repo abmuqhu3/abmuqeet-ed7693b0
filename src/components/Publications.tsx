@@ -128,7 +128,7 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
                 className="flex items-center gap-1 text-sm font-mono text-primary hover:underline"
               >
                 {expanded ? "collapse()" : "expand()"}
-                <ChevronDown className={`h-3 w-3 transition-transform ${expanded ? "rotate-180" : ""}`} />
+                
               </button>
 
               {pub.isPdf && (
