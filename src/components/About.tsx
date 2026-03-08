@@ -15,7 +15,7 @@ const About = () => {
           transform: "scale(1.1)",
         }}
       />
-      <div className="absolute inset-0 bg-[#030308]/70" />
+      <div className="absolute inset-0 bg-[#030308]/50" />
 
       <div className="relative z-10 section-padding">
         <div className="section-container">
