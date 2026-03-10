@@ -1,36 +1,42 @@
 import { motion } from "framer-motion";
-import { Code, Brain, Cpu, Wrench, Bot, Users, Car } from "lucide-react";
+import { Code, Brain, Cpu, Wrench, Bot, Users, Car, Zap } from "lucide-react";
 
 const skillCategories = [
   {
     category: "Programming",
     icon: Code,
     skills: ["Python", "C++ (Basics)", "SQL", "MATLAB"],
+    color: "from-neon-blue/20 to-neon-cyan/10",
   },
   {
     category: "AI / Computer Vision",
     icon: Brain,
     skills: ["PyTorch", "TensorFlow", "YOLO", "OpenCV", "Deep Learning", "CNNs", "NLP", "OCR", "Pandas", "NumPy", "Scikit-Learn"],
+    color: "from-neon-purple/20 to-neon-blue/10",
   },
   {
     category: "Robotics / Autonomous Systems",
     icon: Bot,
     skills: ["ROS / ROS2", "SLAM", "Navigation Stack", "Sensor Fusion", "Path Planning", "LLMs", "Multi-Agent Systems"],
+    color: "from-neon-cyan/20 to-accent/10",
   },
   {
     category: "Automotive / Embedded",
     icon: Car,
     skills: ["TI Jacinto", "OpenVX", "Vision Apps", "TIDL", "Embedded Linux", "ESP32", "STM32", "Arduino", "NVIDIA Jetson", "PLCs"],
+    color: "from-neon-orange/20 to-neon-blue/10",
   },
   {
     category: "Tools & Platforms",
     icon: Wrench,
     skills: ["Git / GitHub", "Linux", "Docker", "Fusion 360", "Ansys", "UiPath RPA"],
+    color: "from-neon-blue/15 to-neon-purple/10",
   },
   {
     category: "Soft Skills",
     icon: Users,
     skills: ["Problem Solving", "Research & Innovation", "Adaptability", "Communication", "Team Work"],
+    color: "from-accent/15 to-neon-cyan/10",
   },
 ];
 
@@ -44,16 +50,19 @@ const Skills = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-3">
-            <div className="h-px w-12 bg-[#00d4ff]/30" />
-            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#00d4ff]/60">Capabilities</span>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="section-label">
+              <Zap className="h-3 w-3" />
+              Capabilities
+            </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-light mb-12">
-            Skills & <span className="font-serif-display italic text-foreground/70">Tools</span>
+          <h2 className="text-3xl md:text-5xl font-orbitron font-bold mb-4 tracking-wide">
+            Skills & <span className="text-primary glow-text-blue">Tools</span>
           </h2>
+          <div className="w-20 h-0.5 bg-gradient-to-r from-primary/60 to-transparent mb-12" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {skillCategories.map((cat, i) => {
             const Icon = cat.icon;
             return (
@@ -62,21 +71,18 @@ const Skills = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="bg-foreground/[0.02] border border-foreground/[0.06] rounded p-5 hover:border-[#00d4ff]/20 transition-all group"
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="floating-card-glow p-6 group cursor-default"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded border border-[#00d4ff]/15 bg-[#00d4ff]/5 flex items-center justify-center group-hover:border-[#00d4ff]/30 transition-colors">
-                    <Icon className="h-3.5 w-3.5 text-[#00d4ff]/70" />
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/15 group-hover:border-primary/40 group-hover:shadow-[0_0_12px_hsl(var(--neon-blue)/0.15)] transition-all duration-300">
+                    <Icon className="h-4 w-4 text-primary/80" />
                   </div>
-                  <h3 className="font-medium text-foreground/70 text-sm">{cat.category}</h3>
+                  <h3 className="font-rajdhani font-semibold text-foreground/80 text-sm tracking-wide">{cat.category}</h3>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {cat.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-2.5 py-1 text-[11px] font-mono rounded bg-foreground/[0.03] text-foreground/40 hover:text-[#00d4ff]/80 hover:bg-[#00d4ff]/5 transition-colors border border-transparent hover:border-[#00d4ff]/15"
-                    >
+                    <span key={skill} className="tech-badge">
                       {skill}
                     </span>
                   ))}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText, ChevronDown, BookOpen, Eye } from "lucide-react";
+import { FileText, ChevronDown, BookOpen, Eye, FlaskConical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -60,26 +60,24 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: index * 0.1 }}
-        className="bg-foreground/[0.02] border border-foreground/[0.06] rounded p-6 hover:border-[#00d4ff]/15 transition-all"
+        className="floating-card-glow p-6 md:p-7 transition-all duration-500"
       >
-        <div className="flex gap-4">
-          <div className="flex-shrink-0 w-10 h-10 rounded border border-[#00d4ff]/15 bg-[#00d4ff]/5 flex items-center justify-center mt-1">
-            <BookOpen className="h-4 w-4 text-[#00d4ff]/60" />
+        <div className="flex gap-5">
+          <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mt-1">
+            <BookOpen className="h-5 w-5 text-primary/70" />
           </div>
 
           <div className="flex-1 min-w-0">
-            <h3 className="text-base font-medium text-foreground/80 leading-snug mb-2 hover:text-foreground transition-colors">
+            <h3 className="text-base font-rajdhani font-bold text-foreground/85 leading-snug mb-2 hover:text-foreground transition-colors tracking-wide">
               {pub.title}
             </h3>
 
-            <p className="text-foreground/35 mb-1 font-mono text-xs">{pub.authors}</p>
+            <p className="text-muted-foreground/50 mb-1 font-mono-code text-xs">{pub.authors}</p>
 
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className="text-xs font-mono text-[#00d4ff]/60">{pub.venue}</span>
-              <span className="text-foreground/15 text-xs">•</span>
-              <span className="text-xs text-foreground/30">{pub.institution}</span>
-              <span className="text-foreground/15 text-xs">•</span>
-              <span className="text-xs text-foreground/25 font-mono">{pub.year}</span>
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              <span className="tech-badge !border-primary/20 !text-primary/70 !bg-primary/5">{pub.venue}</span>
+              <span className="text-xs text-muted-foreground/30">{pub.institution}</span>
+              <span className="text-xs text-muted-foreground/25 font-mono-code">{pub.year}</span>
             </div>
 
             <AnimatePresence>
@@ -91,23 +89,23 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="bg-foreground/[0.03] rounded p-4 mb-3 border border-foreground/[0.05]">
-                    <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00d4ff]/50 mb-2">Abstract</p>
-                    <p className="text-sm text-foreground/40 leading-relaxed">{pub.abstract}</p>
+                  <div className="floating-card p-5 mb-4">
+                    <p className="text-[10px] font-orbitron font-semibold uppercase tracking-[0.2em] text-primary/60 mb-3">Abstract</p>
+                    <p className="text-sm text-muted-foreground/55 leading-relaxed font-space">{pub.abstract}</p>
                   </div>
 
-                  <div className="flex flex-wrap gap-1.5 mb-3">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {pub.keywords.map((kw) => (
-                      <span key={kw} className="px-2 py-0.5 text-[11px] font-mono rounded border border-foreground/[0.06] text-foreground/30">
+                      <span key={kw} className="tech-badge">
                         {kw}
                       </span>
                     ))}
                   </div>
 
                   {pub.isPdf && (
-                    <div className="mb-3 rounded overflow-hidden border border-foreground/[0.06]">
-                      <div className="flex items-center px-3 py-2 bg-foreground/[0.03] border-b border-foreground/[0.05]">
-                        <span className="text-[10px] font-mono font-bold text-[#00d4ff]/50 uppercase tracking-widest">Paper Preview</span>
+                    <div className="mb-4 floating-card overflow-hidden">
+                      <div className="flex items-center px-4 py-2.5 bg-secondary/30 border-b border-border/30">
+                        <span className="text-[10px] font-orbitron font-semibold text-primary/60 uppercase tracking-[0.2em]">Paper Preview</span>
                       </div>
                       <iframe
                         src={pub.pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1"}
@@ -121,18 +119,24 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
               )}
             </AnimatePresence>
 
-            <div className="flex items-center gap-3 flex-wrap">
+            <div className="flex items-center gap-4 flex-wrap">
               <button
                 onClick={() => setExpanded(!expanded)}
-                className="flex items-center gap-1 text-sm font-mono text-[#00d4ff]/50 hover:text-[#00d4ff] transition-colors"
+                className="flex items-center gap-1.5 text-[11px] font-orbitron text-primary/60 hover:text-primary transition-colors duration-300 tracking-wider"
               >
-                {expanded ? "collapse()" : "expand()"}
+                {expanded ? "COLLAPSE" : "EXPAND"}
+                <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
               </button>
 
               {pub.isPdf && (
-                <Button variant="outline" size="sm" onClick={() => setPdfOpen(true)} className="text-xs font-mono border-foreground/[0.08] hover:border-[#00d4ff]/30 text-foreground/40 hover:text-foreground/70 rounded-none h-7">
-                  <Eye className="h-3 w-3 mr-1" />
-                  Preview PDF
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setPdfOpen(true)}
+                  className="text-[10px] font-orbitron border-border/40 hover:border-primary/40 text-muted-foreground/50 hover:text-foreground/80 rounded-xl h-7 tracking-wider"
+                >
+                  <Eye className="h-3 w-3 mr-1.5" />
+                  PREVIEW PDF
                 </Button>
               )}
             </div>
@@ -142,12 +146,12 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
 
       {pub.isPdf && (
         <Dialog open={pdfOpen} onOpenChange={setPdfOpen}>
-          <DialogContent className="max-w-5xl max-h-[90vh] bg-[#0a0a14] border-foreground/10">
+          <DialogContent className="max-w-5xl max-h-[90vh] bg-card border-border/30">
             <DialogHeader>
-              <DialogTitle className="text-sm pr-8 font-mono text-foreground/80">{pub.title}</DialogTitle>
-              <DialogDescription className="font-mono text-xs text-foreground/40">{pub.authors} — {pub.venue} {pub.year}</DialogDescription>
+              <DialogTitle className="text-sm pr-8 font-rajdhani font-bold text-foreground/85 tracking-wide">{pub.title}</DialogTitle>
+              <DialogDescription className="font-mono-code text-xs text-muted-foreground/50">{pub.authors} — {pub.venue} {pub.year}</DialogDescription>
             </DialogHeader>
-            <div className="w-full h-[70vh] rounded overflow-hidden border border-foreground/[0.06]">
+            <div className="w-full h-[70vh] rounded-xl overflow-hidden border border-border/30">
               <iframe
                 src={pub.pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1"}
                 className="w-full h-full"
@@ -172,19 +176,22 @@ const Publications = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-3">
-            <div className="h-px w-12 bg-[#00d4ff]/30" />
-            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#00d4ff]/60">Research</span>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="section-label">
+              <FlaskConical className="h-3 w-3" />
+              Research
+            </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-light mb-4">
-            <span className="font-serif-display italic text-foreground/70">Publications</span>
+          <h2 className="text-3xl md:text-5xl font-orbitron font-bold mb-4 tracking-wide">
+            <span className="text-primary glow-text-blue">Publications</span>
           </h2>
-          <p className="text-foreground/30 mb-12 max-w-2xl text-sm">
+          <p className="text-muted-foreground/45 mb-12 max-w-2xl text-sm font-space">
             Peer-reviewed research in driver safety systems, medical AI, computer vision, and intelligent systems.
           </p>
+          <div className="w-20 h-0.5 bg-gradient-to-r from-primary/60 to-transparent mb-12" />
         </motion.div>
 
-        <div className="space-y-4">
+        <div className="space-y-5">
           {publications.map((pub, i) => (
             <PublicationCard key={pub.title} pub={pub} index={i} />
           ))}

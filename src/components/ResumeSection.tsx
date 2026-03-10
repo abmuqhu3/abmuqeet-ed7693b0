@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, FileText, Award, Briefcase, GraduationCap } from "lucide-react";
+import { Download, FileText, Award, Briefcase, GraduationCap, ScrollText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const highlights = [
@@ -19,13 +19,16 @@ const ResumeSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-3">
-            <div className="h-px w-12 bg-[#00d4ff]/30" />
-            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#00d4ff]/60">Document</span>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="section-label">
+              <ScrollText className="h-3 w-3" />
+              Document
+            </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-light mb-12">
-            <span className="font-serif-display italic text-foreground/70">Resume</span>
+          <h2 className="text-3xl md:text-5xl font-orbitron font-bold mb-4 tracking-wide">
+            <span className="text-primary glow-text-blue">Resume</span>
           </h2>
+          <div className="w-20 h-0.5 bg-gradient-to-r from-primary/60 to-transparent mb-12" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -36,29 +39,31 @@ const ResumeSection = () => {
             transition={{ duration: 0.5 }}
             className="space-y-6"
           >
-            <p className="text-foreground/40 leading-relaxed text-sm">
-              ADAS and Autonomous Systems Engineer with experience in embedded control, sensor integration, and ROS-based autonomy for ground vehicles and production road vehicles.
-            </p>
+            <div className="floating-card p-7">
+              <p className="text-muted-foreground/55 leading-relaxed text-sm font-space mb-6">
+                ADAS and Autonomous Systems Engineer with experience in embedded control, sensor integration, and ROS-based autonomy for ground vehicles and production road vehicles.
+              </p>
 
-            <div className="space-y-4">
-              <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00d4ff]/50">Key Highlights</p>
-              {highlights.map((h) => {
-                const Icon = h.icon;
-                return (
-                  <div key={h.label} className="flex items-center gap-3 group">
-                    <div className="w-8 h-8 rounded border border-[#00d4ff]/15 bg-[#00d4ff]/5 flex items-center justify-center flex-shrink-0 group-hover:border-[#00d4ff]/30 transition-colors">
-                      <Icon className="h-3.5 w-3.5 text-[#00d4ff]/60" />
+              <div className="space-y-4">
+                <p className="text-[10px] font-orbitron font-semibold uppercase tracking-[0.2em] text-primary/60">Key Highlights</p>
+                {highlights.map((h) => {
+                  const Icon = h.icon;
+                  return (
+                    <div key={h.label} className="flex items-center gap-3 group">
+                      <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 group-hover:border-primary/40 group-hover:shadow-[0_0_10px_hsl(var(--neon-blue)/0.12)] transition-all duration-300">
+                        <Icon className="h-3.5 w-3.5 text-primary/70" />
+                      </div>
+                      <span className="text-sm text-muted-foreground/55 font-space">{h.label}</span>
                     </div>
-                    <span className="text-sm text-foreground/40">{h.label}</span>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
 
-            <Button asChild className="mt-4 bg-[#00d4ff]/10 hover:bg-[#00d4ff]/20 text-[#00d4ff]/80 border border-[#00d4ff]/20 hover:border-[#00d4ff]/40 font-mono text-xs rounded-none h-10 px-6">
+            <Button asChild className="bg-primary/10 hover:bg-primary/20 text-primary border border-primary/25 hover:border-primary/50 font-orbitron text-[10px] tracking-[0.15em] uppercase rounded-xl h-11 px-7 transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--neon-blue)/0.2)]">
               <a href="/Abdul_Muqeet_Resume.pdf" download>
-                <Download className="h-3.5 w-3.5 mr-2" />
-                download_resume.pdf
+                <Download className="h-4 w-4 mr-2" />
+                Download Resume
               </a>
             </Button>
           </motion.div>
@@ -68,10 +73,10 @@ const ResumeSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-foreground/[0.02] border border-foreground/[0.06] rounded overflow-hidden hover:border-[#00d4ff]/15 transition-all"
+            className="floating-card-glow overflow-hidden"
           >
-            <div className="flex items-center px-4 py-2 bg-foreground/[0.03] border-b border-foreground/[0.05]">
-              <span className="text-[10px] font-mono font-bold text-[#00d4ff]/50 uppercase tracking-widest">Resume Preview</span>
+            <div className="flex items-center px-5 py-3 bg-secondary/30 border-b border-border/30">
+              <span className="text-[10px] font-orbitron font-semibold text-primary/60 uppercase tracking-[0.2em]">Resume Preview</span>
             </div>
             <div className="aspect-[3/4]">
               <iframe

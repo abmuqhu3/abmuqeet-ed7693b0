@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Star, ExternalLink } from "lucide-react";
+import { ChevronDown, Star, ExternalLink, FolderOpen, Rocket } from "lucide-react";
 
 const projects = [
   {
@@ -91,24 +91,23 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
-      className={`bg-foreground/[0.02] border rounded overflow-hidden transition-all group ${
-        project.featured
-          ? "border-[#00d4ff]/20 hover:border-[#00d4ff]/40 md:col-span-2"
-          : "border-foreground/[0.06] hover:border-[#00d4ff]/20"
+      className={`floating-card-glow overflow-hidden transition-all duration-500 group ${
+        project.featured ? "md:col-span-2 border-primary/20" : ""
       }`}
     >
-      <div className="p-6">
+      <div className="p-6 md:p-7">
+        {/* Header */}
         <div className="flex items-start gap-3 mb-3">
           {project.featured && (
-            <span className="flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest rounded bg-[#00d4ff]/5 text-[#00d4ff]/70 border border-[#00d4ff]/15">
-              <Star className="h-3 w-3" /> Featured
+            <span className="section-label !py-1 !px-3 !text-[9px]">
+              <Star className="h-2.5 w-2.5" /> Featured
             </span>
           )}
         </div>
-        <h3 className="text-lg font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
+        <h3 className="text-lg font-rajdhani font-bold text-foreground/85 mb-2 group-hover:text-foreground transition-colors tracking-wide">
           {project.title}
         </h3>
-        <p className="text-sm text-foreground/40 mb-4 leading-relaxed">
+        <p className="text-sm text-muted-foreground/60 mb-4 leading-relaxed font-space">
           {project.description}
         </p>
 
@@ -121,15 +120,17 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <p className="text-sm text-foreground/40 mb-4 leading-relaxed">
-                {project.details}
-              </p>
+              <div className="bg-secondary/30 rounded-xl p-5 mb-4 border border-border/30">
+                <p className="text-sm text-muted-foreground/60 leading-relaxed font-space">
+                  {project.details}
+                </p>
+              </div>
               <div className="mb-4">
-                <p className="text-[10px] font-mono font-bold text-[#00d4ff]/60 mb-2 uppercase tracking-widest">Key Achievements</p>
-                <ul className="space-y-1">
+                <p className="text-[10px] font-orbitron font-semibold text-primary/70 mb-3 uppercase tracking-[0.2em]">Key Achievements</p>
+                <ul className="space-y-2">
                   {project.achievements.map((a) => (
-                    <li key={a} className="text-sm text-foreground/40 flex gap-2">
-                      <span className="text-[#00d4ff]/50 font-mono">→</span> {a}
+                    <li key={a} className="text-sm text-muted-foreground/60 flex gap-2 font-space">
+                      <Rocket className="h-3.5 w-3.5 text-primary/50 flex-shrink-0 mt-0.5" /> {a}
                     </li>
                   ))}
                 </ul>
@@ -138,28 +139,28 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           )}
         </AnimatePresence>
 
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4">
           {project.tech.map((t) => (
-            <span key={t} className="px-2 py-0.5 text-[11px] font-mono rounded border border-foreground/[0.06] text-foreground/35 hover:text-[#00d4ff]/70 hover:border-[#00d4ff]/20 transition-colors">
+            <span key={t} className="tech-badge">
               {t}
             </span>
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="flex items-center gap-1 text-sm font-mono text-[#00d4ff]/60 hover:text-[#00d4ff] transition-colors"
+            className="flex items-center gap-1.5 text-sm font-orbitron text-primary/60 hover:text-primary transition-colors duration-300 text-[11px] tracking-wider"
           >
-            {expanded ? "collapse()" : "expand()"}
-            <ChevronDown className={`h-3 w-3 transition-transform ${expanded ? "rotate-180" : ""}`} />
+            {expanded ? "COLLAPSE" : "EXPAND"}
+            <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
           </button>
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-sm font-mono text-foreground/30 hover:text-[#00d4ff]/70 transition-colors"
+              className="flex items-center gap-1.5 text-sm font-exo text-muted-foreground/40 hover:text-primary/80 transition-colors duration-300 text-[11px] tracking-wider"
             >
               <ExternalLink className="h-3 w-3" />
               GitHub
@@ -181,19 +182,22 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 mb-3">
-            <div className="h-px w-12 bg-[#00d4ff]/30" />
-            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#00d4ff]/60">Portfolio</span>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="section-label">
+              <FolderOpen className="h-3 w-3" />
+              Portfolio
+            </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-light mb-4">
-            <span className="font-serif-display italic text-foreground/70">Projects</span>
+          <h2 className="text-3xl md:text-5xl font-orbitron font-bold mb-4 tracking-wide">
+            <span className="text-primary glow-text-blue">Projects</span>
           </h2>
-          <p className="text-foreground/35 mb-12 max-w-2xl text-sm">
+          <p className="text-muted-foreground/50 mb-12 max-w-2xl text-sm font-space">
             Research and engineering projects spanning robotics, autonomous systems, automotive perception, medical AI, and embedded systems.
           </p>
+          <div className="w-20 h-0.5 bg-gradient-to-r from-primary/60 to-transparent mb-12" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-5">
           {projects.map((project, i) => (
             <ProjectCard key={project.title} project={project} index={i} />
           ))}
