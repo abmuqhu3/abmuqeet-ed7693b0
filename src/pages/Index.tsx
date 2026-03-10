@@ -42,24 +42,21 @@ const Index = () => {
   const [grabTarget, setGrabTarget] = useState<string | null>(null);
   const [grabState, setGrabState] = useState<GrabState>('idle');
 
-  // Force dark mode
   useEffect(() => {
     document.documentElement.classList.add("dark");
   }, []);
 
-  // Track scroll progress
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const docHeight = document.body.scrollHeight - window.innerHeight;
       setScrollProgress(docHeight > 0 ? scrollY / docHeight : 0);
-      setShowNav(scrollY > window.innerHeight * 0.5);
+      setShowNav(scrollY > window.innerHeight * 0.4);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Track active section
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -80,7 +77,6 @@ const Index = () => {
     if (grabState !== 'idle') return;
     setGrabTarget(target);
     setGrabState('reaching');
-
     setTimeout(() => setGrabState('grabbing'), GRAB_SEQUENCE_TIMING.reaching);
     setTimeout(() => setGrabState('pulling'), GRAB_SEQUENCE_TIMING.reaching + GRAB_SEQUENCE_TIMING.grabbing);
     setTimeout(() => setGrabState('releasing'), GRAB_SEQUENCE_TIMING.reaching + GRAB_SEQUENCE_TIMING.grabbing + GRAB_SEQUENCE_TIMING.pulling);
@@ -99,8 +95,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#030308] text-foreground overflow-x-hidden">
-      {/* Fixed 3D Arm - persists across scroll */}
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Fixed 3D Arm */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <RoboticArm3D
           scrollProgress={scrollProgress}
@@ -109,56 +105,69 @@ const Index = () => {
         />
       </div>
 
-      {/* Floating nav */}
+      {/* Floating navigation */}
       <AnimatePresence>
         {showNav && (
           <motion.nav
-            initial={{ y: -60, opacity: 0 }}
+            initial={{ y: -80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -60, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#030308]/80 border-b border-foreground/5"
+            exit={{ y: -80, opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-auto"
           >
-            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-12">
-              <button onClick={() => scrollTo("home")} className="font-orbitron text-xs tracking-[0.2em] text-[#00d4ff]/70 hover:text-[#00d4ff] transition-colors">
+            <div className="floating-card px-2 py-1.5 flex items-center gap-1 rounded-full border border-border/30">
+              <button
+                onClick={() => scrollTo("home")}
+                className="font-orbitron text-[10px] tracking-[0.2em] text-primary/80 hover:text-primary transition-colors px-3 py-1.5"
+              >
                 KAM
               </button>
-              <div className="hidden md:flex items-center gap-1">
-                {navItems.map((item) => (
+              <div className="hidden md:flex items-center gap-0.5">
+                {navItems.slice(1).map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollTo(item.id)}
-                    className={`px-3 py-1.5 text-[10px] font-mono tracking-wider uppercase transition-colors rounded ${
+                    className={`px-3 py-1.5 text-[10px] font-exo font-medium tracking-wider uppercase transition-all duration-300 rounded-full ${
                       activeSection === item.id
-                        ? "text-[#00d4ff] bg-[#00d4ff]/5"
-                        : "text-foreground/40 hover:text-foreground/70"
+                        ? "text-primary bg-primary/10 shadow-[0_0_12px_hsl(var(--neon-blue)/0.15)]"
+                        : "text-muted-foreground hover:text-foreground/80 hover:bg-secondary/50"
                     }`}
                   >
                     {item.label}
                   </button>
                 ))}
               </div>
-              <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-foreground/50 h-8 w-8">
-                {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-              </Button>
+              <div className="flex items-center gap-1 ml-1">
+                <div className="status-dot" />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="md:hidden text-muted-foreground h-7 w-7 rounded-full"
+                >
+                  {mobileMenuOpen ? <X className="h-3.5 w-3.5" /> : <Menu className="h-3.5 w-3.5" />}
+                </Button>
+              </div>
             </div>
+
             <AnimatePresence>
               {mobileMenuOpen && (
                 <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  className="md:hidden overflow-hidden border-t border-foreground/5 bg-[#030308]/95"
+                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="md:hidden floating-card mt-2 rounded-2xl overflow-hidden"
                 >
-                  <div className="p-4 space-y-1">
+                  <div className="p-3 space-y-0.5">
                     {navItems.map((item) => (
                       <button
                         key={item.id}
                         onClick={() => scrollTo(item.id)}
-                        className={`block w-full text-left px-4 py-2.5 text-xs font-mono tracking-wider uppercase rounded transition-colors ${
+                        className={`block w-full text-left px-4 py-2.5 text-xs font-exo font-medium tracking-wider uppercase rounded-xl transition-all ${
                           activeSection === item.id
-                            ? "text-[#00d4ff] bg-[#00d4ff]/5"
-                            : "text-foreground/40 hover:text-foreground/70"
+                            ? "text-primary bg-primary/10"
+                            : "text-muted-foreground hover:text-foreground/80 hover:bg-secondary/50"
                         }`}
                       >
                         {item.label}
@@ -175,30 +184,24 @@ const Index = () => {
       {/* Hero */}
       <Hero scrollProgress={scrollProgress} onArmGrab={triggerArmGrab} />
 
-      {/* Divider */}
-      <div className="relative h-px z-10">
-        <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-[#00d4ff]/30 to-transparent" />
-      </div>
-
       {/* Content sections */}
       <div className="relative z-10">
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'linear-gradient(rgba(0,212,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.3) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }} />
+        {/* Subtle grid overlay */}
+        <div className="fixed inset-0 pointer-events-none z-[1] opacity-[0.02] grid-bg" />
 
+        <SectionDivider />
         <SectionReveal direction="left"><About /></SectionReveal>
-        <MechanicalDivider />
+        <SectionDivider />
         <SectionReveal direction="right"><Skills /></SectionReveal>
-        <MechanicalDivider />
+        <SectionDivider />
         <SectionReveal direction="bottom"><Projects /></SectionReveal>
-        <MechanicalDivider />
+        <SectionDivider />
         <SectionReveal direction="top"><Publications /></SectionReveal>
-        <MechanicalDivider />
+        <SectionDivider />
         <SectionReveal direction="left"><Experience /></SectionReveal>
-        <MechanicalDivider />
+        <SectionDivider />
         <SectionReveal direction="right"><ResumeSection /></SectionReveal>
-        <MechanicalDivider />
+        <SectionDivider />
         <SectionReveal direction="bottom"><Contact /></SectionReveal>
         <Footer />
       </div>
@@ -206,13 +209,15 @@ const Index = () => {
   );
 };
 
-const MechanicalDivider = () => (
-  <div className="relative py-4 flex items-center justify-center">
-    <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-foreground/5 to-transparent" />
-    <div className="relative flex items-center gap-3">
-      <div className="w-8 h-px bg-[#00d4ff]/20" />
-      <div className="w-1.5 h-1.5 rounded-full bg-[#00d4ff]/20 border border-[#00d4ff]/10" />
-      <div className="w-8 h-px bg-[#00d4ff]/20" />
+const SectionDivider = () => (
+  <div className="relative py-8 flex items-center justify-center">
+    <div className="accent-line w-full absolute" />
+    <div className="relative flex items-center gap-4 bg-background px-6">
+      <div className="w-1.5 h-1.5 rounded-full bg-primary/30 shadow-[0_0_6px_hsl(var(--neon-blue)/0.4)]" />
+      <div className="w-6 h-px bg-primary/20" />
+      <div className="w-2 h-2 rotate-45 border border-primary/20" />
+      <div className="w-6 h-px bg-primary/20" />
+      <div className="w-1.5 h-1.5 rounded-full bg-primary/30 shadow-[0_0_6px_hsl(var(--neon-blue)/0.4)]" />
     </div>
   </div>
 );

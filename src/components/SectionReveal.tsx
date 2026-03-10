@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 type Direction = "left" | "right" | "top" | "bottom";
 
 const getVariants = (direction: Direction) => {
-  const offset = 120;
+  const offset = 80;
   const map = {
     left: { x: -offset, y: 0 },
     right: { x: offset, y: 0 },
@@ -13,13 +13,13 @@ const getVariants = (direction: Direction) => {
   };
   const { x, y } = map[direction];
   return {
-    hidden: { opacity: 0, x, y, scale: 0.95 },
-    visible: { 
-      opacity: 1, x: 0, y: 0, scale: 1,
-      transition: { 
-        duration: 0.8, 
-        ease: [0.25, 0.46, 0.45, 0.94] as const,
-        staggerChildren: 0.1 
+    hidden: { opacity: 0, x, y, scale: 0.97, filter: "blur(4px)" },
+    visible: {
+      opacity: 1, x: 0, y: 0, scale: 1, filter: "blur(0px)",
+      transition: {
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+        staggerChildren: 0.1,
       }
     },
   };
@@ -39,7 +39,7 @@ const SectionReveal = ({ children, direction = "bottom", className = "", delay =
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-80px" }}
       variants={{
         hidden: variants.hidden,
         visible: {
