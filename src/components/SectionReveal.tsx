@@ -18,7 +18,7 @@ const getVariants = (direction: Direction) => {
       opacity: 1, x: 0, y: 0, scale: 1, filter: "blur(0px)",
       transition: {
         duration: 0.9,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.22, 1, 0.36, 1] as const,
         staggerChildren: 0.1,
       }
     },
