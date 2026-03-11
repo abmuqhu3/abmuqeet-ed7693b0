@@ -17,7 +17,7 @@
     --secondary: 220 25% 11%;
     --secondary-foreground: 195 20% 92%;
     --muted: 220 25% 11%;
-    --muted-foreground: 215 15% 50%;
+    --muted-foreground: 215 15% 70%;
     --accent: 170 80% 45%;
     --accent-foreground: 220 30% 4%;
     --destructive: 0 62.8% 30.6%;
@@ -55,7 +55,7 @@
     --secondary: 220 25% 11%;
     --secondary-foreground: 195 20% 92%;
     --muted: 220 25% 11%;
-    --muted-foreground: 215 15% 50%;
+    --muted-foreground: 215 15% 70%;
     --accent: 170 80% 45%;
     --accent-foreground: 220 30% 4%;
     --destructive: 0 62.8% 30.6%;
@@ -219,7 +219,7 @@
   .tech-badge {
     @apply px-3 py-1 text-[11px] font-mono rounded-lg border transition-all duration-300;
     border-color: hsl(var(--border) / 0.5);
-    color: hsl(var(--foreground) / 0.4);
+    color: hsl(var(--foreground) / 0.7);
     background: hsl(var(--card) / 0.5);
   }
 

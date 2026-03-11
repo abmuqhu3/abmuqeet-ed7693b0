@@ -40,20 +40,20 @@ const ResumeSection = () => {
             className="space-y-6"
           >
             <div className="floating-card p-7">
-              <p className="text-muted-foreground/55 leading-relaxed text-sm font-space mb-6">
+              <p className="text-foreground/75 leading-relaxed text-sm font-space mb-6">
                 ADAS and Autonomous Systems Engineer with experience in embedded control, sensor integration, and ROS-based autonomy for ground vehicles and production road vehicles.
               </p>
 
               <div className="space-y-4">
-                <p className="text-[10px] font-orbitron font-semibold uppercase tracking-[0.2em] text-primary/60">Key Highlights</p>
+                <p className="text-[10px] font-orbitron font-semibold uppercase tracking-[0.2em] text-primary">Key Highlights</p>
                 {highlights.map((h) => {
                   const Icon = h.icon;
                   return (
                     <div key={h.label} className="flex items-center gap-3 group">
                       <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 group-hover:border-primary/40 group-hover:shadow-[0_0_10px_hsl(var(--neon-blue)/0.12)] transition-all duration-300">
-                        <Icon className="h-3.5 w-3.5 text-primary/70" />
+                        <Icon className="h-3.5 w-3.5 text-primary" />
                       </div>
-                      <span className="text-sm text-muted-foreground/55 font-space">{h.label}</span>
+                      <span className="text-sm text-foreground/75 font-space">{h.label}</span>
                     </div>
                   );
                 })}
@@ -76,7 +76,7 @@ const ResumeSection = () => {
             className="floating-card-glow overflow-hidden"
           >
             <div className="flex items-center px-5 py-3 bg-secondary/30 border-b border-border/30">
-              <span className="text-[10px] font-orbitron font-semibold text-primary/60 uppercase tracking-[0.2em]">Resume Preview</span>
+              <span className="text-[10px] font-orbitron font-semibold text-primary/80 uppercase tracking-[0.2em]">Resume Preview</span>
             </div>
             <div className="aspect-[3/4]">
               <iframe

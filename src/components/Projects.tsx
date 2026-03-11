@@ -104,10 +104,10 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
             </span>
           )}
         </div>
-        <h3 className="text-lg font-rajdhani font-bold text-foreground/85 mb-2 group-hover:text-foreground transition-colors tracking-wide">
+        <h3 className="text-lg font-rajdhani font-bold text-foreground mb-2 group-hover:text-primary transition-colors tracking-wide">
           {project.title}
         </h3>
-        <p className="text-sm text-muted-foreground/60 mb-4 leading-relaxed font-space">
+        <p className="text-sm text-muted-foreground mb-4 leading-relaxed font-space">
           {project.description}
         </p>
 
@@ -121,16 +121,16 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
               className="overflow-hidden"
             >
               <div className="bg-secondary/30 rounded-xl p-5 mb-4 border border-border/30">
-                <p className="text-sm text-muted-foreground/60 leading-relaxed font-space">
+                <p className="text-sm text-foreground/75 leading-relaxed font-space">
                   {project.details}
                 </p>
               </div>
               <div className="mb-4">
-                <p className="text-[10px] font-orbitron font-semibold text-primary/70 mb-3 uppercase tracking-[0.2em]">Key Achievements</p>
+                <p className="text-[10px] font-orbitron font-semibold text-primary mb-3 uppercase tracking-[0.2em]">Key Achievements</p>
                 <ul className="space-y-2">
                   {project.achievements.map((a) => (
-                    <li key={a} className="text-sm text-muted-foreground/60 flex gap-2 font-space">
-                      <Rocket className="h-3.5 w-3.5 text-primary/50 flex-shrink-0 mt-0.5" /> {a}
+                    <li key={a} className="text-sm text-foreground/75 flex gap-2 font-space">
+                      <Rocket className="h-3.5 w-3.5 text-primary/70 flex-shrink-0 mt-0.5" /> {a}
                     </li>
                   ))}
                 </ul>
@@ -150,7 +150,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         <div className="flex items-center gap-4">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="flex items-center gap-1.5 text-sm font-orbitron text-primary/60 hover:text-primary transition-colors duration-300 text-[11px] tracking-wider"
+            className="flex items-center gap-1.5 text-sm font-orbitron text-primary/80 hover:text-primary transition-colors duration-300 text-[11px] tracking-wider"
           >
             {expanded ? "COLLAPSE" : "EXPAND"}
             <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
@@ -160,7 +160,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm font-exo text-muted-foreground/40 hover:text-primary/80 transition-colors duration-300 text-[11px] tracking-wider"
+              className="flex items-center gap-1.5 text-sm font-exo text-primary/70 hover:text-primary transition-colors duration-300 text-[11px] tracking-wider underline-offset-4 hover:underline"
             >
               <ExternalLink className="h-3 w-3" />
               GitHub
@@ -191,7 +191,7 @@ const Projects = () => {
           <h2 className="text-3xl md:text-5xl font-orbitron font-bold mb-4 tracking-wide">
             <span className="text-primary glow-text-blue">Projects</span>
           </h2>
-          <p className="text-muted-foreground/50 mb-12 max-w-2xl text-sm font-space">
+          <p className="text-muted-foreground mb-12 max-w-2xl text-sm font-space">
             Research and engineering projects spanning robotics, autonomous systems, automotive perception, medical AI, and embedded systems.
           </p>
           <div className="w-20 h-0.5 bg-gradient-to-r from-primary/60 to-transparent mb-12" />

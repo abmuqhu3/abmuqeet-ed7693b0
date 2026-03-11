@@ -38,15 +38,15 @@ const About = () => {
             <div className="w-20 h-0.5 bg-gradient-to-r from-primary/60 to-transparent mb-12" />
 
             <div className="grid md:grid-cols-2 gap-10">
-              <div className="floating-card p-8 space-y-4 text-foreground/60 leading-relaxed text-sm font-space">
+              <div className="floating-card p-8 space-y-4 text-foreground/80 leading-relaxed text-sm font-space">
                 <p>
-                  I am an <span className="text-foreground/90 font-semibold">ADAS and Autonomous Systems Engineer</span> with hands-on experience in embedded control, sensor integration, and ROS-based autonomy for ground vehicles and production road vehicles.
+                  I am an <span className="text-foreground font-semibold">ADAS and Autonomous Systems Engineer</span> with hands-on experience in embedded control, sensor integration, and ROS-based autonomy for ground vehicles and production road vehicles.
                 </p>
                 <p>
                   My work spans AEBS braking logic, vehicle longitudinal dynamics, safety-critical decision-making, decentralized navigation, multi-agent coordination, and AI/ML models using real-time sensor data.
                 </p>
                 <p>
-                  Currently contributing to autonomous navigation research at <span className="text-primary/90 font-semibold">TiHAN, IIT Hyderabad</span> — working on campus shuttle autonomy, vehicle platooning, indoor UAV navigation, and <span className="text-primary/90 font-semibold">Software Defined Vehicle (SDV)</span> perception systems using TI Jacinto platforms.
+                  Currently contributing to autonomous navigation research at <span className="text-primary font-semibold">TiHAN, IIT Hyderabad</span> — working on campus shuttle autonomy, vehicle platooning, indoor UAV navigation, and <span className="text-primary font-semibold">Software Defined Vehicle (SDV)</span> perception systems using TI Jacinto platforms.
                 </p>
               </div>
 
@@ -68,12 +68,12 @@ const About = () => {
                       className="floating-card-glow p-5 flex gap-4 group cursor-default"
                     >
                       <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/15 group-hover:border-primary/40 transition-all duration-300">
-                        <Icon className="h-4.5 w-4.5 text-primary/80" />
+                        <Icon className="h-4.5 w-4.5 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-rajdhani font-semibold text-foreground/85 text-sm tracking-wide">{item.title}</h3>
-                        <p className="text-xs text-muted-foreground/60 mt-0.5 font-space">{item.sub}</p>
-                        {item.extra && <p className="text-xs text-muted-foreground/40 font-mono-code mt-0.5">{item.extra}</p>}
+                        <h3 className="font-rajdhani font-semibold text-foreground text-sm tracking-wide">{item.title}</h3>
+                        <p className="text-xs text-muted-foreground mt-0.5 font-space">{item.sub}</p>
+                        {item.extra && <p className="text-xs text-muted-foreground/70 font-mono-code mt-0.5">{item.extra}</p>}
                       </div>
                     </motion.div>
                   );

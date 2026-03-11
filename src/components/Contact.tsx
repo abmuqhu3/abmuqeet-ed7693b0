@@ -24,7 +24,7 @@ const Contact = () => {
           </h2>
           <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-primary/60 to-transparent mx-auto mb-8" />
 
-          <p className="text-muted-foreground/50 mb-10 leading-relaxed text-sm font-space">
+          <p className="text-muted-foreground mb-10 leading-relaxed text-sm font-space">
             Open to research collaborations, autonomous systems projects, and opportunities in robotics, ADAS, and AI. Let's connect.
           </p>
 
@@ -36,13 +36,13 @@ const Contact = () => {
                   am586288@gmail.com
                 </a>
               </Button>
-              <Button asChild variant="outline" className="border-border/40 hover:border-primary/40 font-exo text-[10px] tracking-wider uppercase text-muted-foreground hover:text-foreground rounded-xl h-12 transition-all duration-300 w-full justify-start">
+              <Button asChild variant="outline" className="border-border/40 hover:border-primary/40 font-exo text-[10px] tracking-wider uppercase text-foreground/80 hover:text-foreground rounded-xl h-12 transition-all duration-300 w-full justify-start">
                 <a href="https://linkedin.com/in/abdulmuqeet343" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-4 w-4 mr-3" />
                   LinkedIn
                 </a>
               </Button>
-              <Button asChild variant="outline" className="border-border/40 hover:border-primary/40 font-exo text-[10px] tracking-wider uppercase text-muted-foreground hover:text-foreground rounded-xl h-12 transition-all duration-300 w-full justify-start">
+              <Button asChild variant="outline" className="border-border/40 hover:border-primary/40 font-exo text-[10px] tracking-wider uppercase text-foreground/80 hover:text-foreground rounded-xl h-12 transition-all duration-300 w-full justify-start">
                 <a href="https://github.com/abmuqhu3" target="_blank" rel="noopener noreferrer">
                   <Github className="h-4 w-4 mr-3" />
                   GitHub
@@ -50,8 +50,8 @@ const Contact = () => {
               </Button>
             </div>
 
-            <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground/30 font-mono-code mt-6 pt-6 border-t border-border/20">
-              <MapPin className="h-3.5 w-3.5 text-primary/40" />
+            <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground/70 font-mono-code mt-6 pt-6 border-t border-border/20">
+              <MapPin className="h-3.5 w-3.5 text-primary/60" />
               <span>Hyderabad, India</span>
             </div>
           </div>

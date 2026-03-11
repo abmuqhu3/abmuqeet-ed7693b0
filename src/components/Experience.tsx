@@ -86,8 +86,8 @@ const Experience = () => {
                 <div className="floating-card-glow p-6 md:p-7">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                     <div>
-                      <h3 className="text-base font-rajdhani font-bold text-foreground/85 tracking-wide">{exp.org}</h3>
-                      <p className="text-primary/65 font-exo text-xs mt-0.5 font-medium tracking-wider">{exp.role}</p>
+                      <h3 className="text-base font-rajdhani font-bold text-foreground tracking-wide">{exp.org}</h3>
+                      <p className="text-primary font-exo text-xs mt-0.5 font-medium tracking-wider">{exp.role}</p>
                     </div>
                     <span className="section-label !text-[9px] !py-1 mt-2 sm:mt-0 w-fit">
                       {exp.period}
@@ -96,8 +96,8 @@ const Experience = () => {
 
                   <ul className="space-y-2.5 mb-5">
                     {exp.points.map((point, j) => (
-                      <li key={j} className="text-sm text-muted-foreground/55 flex gap-2.5 font-space">
-                        <Rocket className="h-3.5 w-3.5 text-primary/40 flex-shrink-0 mt-0.5" />
+                      <li key={j} className="text-sm text-foreground/75 flex gap-2.5 font-space">
+                        <Rocket className="h-3.5 w-3.5 text-primary/70 flex-shrink-0 mt-0.5" />
                         <span>{point}</span>
                       </li>
                     ))}
