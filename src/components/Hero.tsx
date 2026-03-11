@@ -70,8 +70,8 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
       >
         <div className="flex items-center gap-3">
           <div className="w-8 h-px bg-primary/30" />
-          <span className="font-orbitron text-[10px] tracking-[0.4em] text-primary/70 font-semibold">KAM</span>
-          <span className="font-mono-code text-[9px] tracking-wider text-muted-foreground/40">// v2.0</span>
+          <span className="font-orbitron text-[10px] tracking-[0.4em] text-primary font-semibold">KAM</span>
+          <span className="font-mono-code text-[9px] tracking-wider text-muted-foreground/60">// v2.0</span>
         </div>
         <div className="hidden md:flex items-center gap-3">
           <div className="section-label">
@@ -134,8 +134,8 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
             >
-              <span className="font-rajdhani font-light text-foreground/50 tracking-[0.25em] text-sm">KALAIGAR </span>
-              <span className="font-rajdhani font-light text-foreground/50 tracking-[0.25em] text-sm">ABDUL </span>
+              <span className="font-rajdhani font-light text-foreground/70 tracking-[0.25em] text-sm">KALAIGAR </span>
+              <span className="font-rajdhani font-light text-foreground/70 tracking-[0.25em] text-sm">ABDUL </span>
               <br />
               <span className="font-orbitron font-bold text-primary text-2xl md:text-3xl glow-text-blue tracking-[0.1em]">MUQEET</span>
             </motion.h2>
@@ -146,7 +146,7 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
               transition={{ delay: 0.9, duration: 0.5 }}
             >
               <div className="h-px w-8 bg-primary/30" />
-              <p className="text-[10px] text-primary/60 font-orbitron tracking-[0.2em] uppercase">
+              <p className="text-[10px] text-primary/80 font-orbitron tracking-[0.2em] uppercase">
                 ADAS & Autonomous Systems
               </p>
             </motion.div>
@@ -160,16 +160,16 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
         >
-          <p className="text-xs md:text-sm text-muted-foreground/60 leading-relaxed font-light mb-4 max-w-md font-space">
+          <p className="text-xs md:text-sm text-foreground/70 leading-relaxed font-light mb-4 max-w-md font-space">
             Building intelligent autonomous systems — Robotics, AI/ML, Perception,{" "}
-            <span className="text-foreground/80 font-medium">ADAS</span> technologies, and{" "}
-            <span className="text-primary/80 font-medium">next-gen vehicle platforms</span>.
+            <span className="text-foreground font-medium">ADAS</span> technologies, and{" "}
+            <span className="text-primary font-medium">next-gen vehicle platforms</span>.
           </p>
 
           <h1 className="text-[clamp(2.5rem,7vw,6rem)] font-light leading-[0.95] tracking-tight text-foreground/90 whitespace-nowrap">
             <DrawingText
               text="Research"
-              className="italic font-serif-display font-light text-foreground/60"
+              className="italic font-serif-display font-light text-foreground/70"
               delay={1.2}
             />{" "}
             <DrawingText
@@ -209,12 +209,12 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
             <Button
               variant="outline"
               onClick={() => handleNavClick("publications")}
-              className="border-border/50 hover:border-primary/40 font-exo text-[10px] tracking-wider uppercase text-muted-foreground hover:text-foreground rounded-xl px-5 h-10 transition-all duration-300"
+              className="border-border/50 hover:border-primary/40 font-exo text-[10px] tracking-wider uppercase text-foreground/80 hover:text-foreground rounded-xl px-5 h-10 transition-all duration-300"
             >
               <BookOpen className="mr-2 h-3.5 w-3.5" />
               Publications
             </Button>
-            <Button variant="outline" asChild className="border-border/50 hover:border-primary/40 font-exo text-[10px] tracking-wider uppercase text-muted-foreground hover:text-foreground rounded-xl px-5 h-10 transition-all duration-300">
+            <Button variant="outline" asChild className="border-border/50 hover:border-primary/40 font-exo text-[10px] tracking-wider uppercase text-foreground/80 hover:text-foreground rounded-xl px-5 h-10 transition-all duration-300">
               <a href="/Abdul_Muqeet_Resume.pdf" download>
                 <FileText className="mr-2 h-3.5 w-3.5" />
                 Resume
@@ -223,7 +223,7 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
             <Button
               variant="outline"
               onClick={() => handleNavClick("contact")}
-              className="border-border/50 hover:border-primary/40 font-exo text-[10px] tracking-wider uppercase text-muted-foreground hover:text-foreground rounded-xl px-5 h-10 transition-all duration-300"
+              className="border-border/50 hover:border-primary/40 font-exo text-[10px] tracking-wider uppercase text-foreground/80 hover:text-foreground rounded-xl px-5 h-10 transition-all duration-300"
             >
               <Mail className="mr-2 h-3.5 w-3.5" />
               Contact
@@ -232,7 +232,7 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
 
           {/* Social links */}
           <motion.div
-            className="flex items-center gap-6 mt-6 font-mono-code text-[10px] tracking-[0.2em] uppercase text-muted-foreground/40"
+            className="flex items-center gap-6 mt-6 font-mono-code text-[10px] tracking-[0.2em] uppercase text-foreground/60"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 3.8, duration: 0.6 }}
@@ -252,11 +252,11 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <span className="text-[8px] font-orbitron text-muted-foreground/30 tracking-[0.3em] uppercase" style={{ writingMode: 'vertical-rl' }}>
+        <span className="text-[8px] font-orbitron text-muted-foreground/50 tracking-[0.3em] uppercase" style={{ writingMode: 'vertical-rl' }}>
           Scroll
         </span>
         <div className="w-px h-8 bg-gradient-to-b from-primary/30 to-transparent" />
-        <ChevronDown className="h-3 w-3 text-primary/30" />
+        <ChevronDown className="h-3 w-3 text-primary/40" />
       </motion.div>
     </section>
   );

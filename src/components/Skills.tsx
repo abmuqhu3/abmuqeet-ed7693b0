@@ -76,9 +76,9 @@ const Skills = () => {
               >
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/15 group-hover:border-primary/40 group-hover:shadow-[0_0_12px_hsl(var(--neon-blue)/0.15)] transition-all duration-300">
-                    <Icon className="h-4 w-4 text-primary/80" />
+                    <Icon className="h-4 w-4 text-primary" />
                   </div>
-                  <h3 className="font-rajdhani font-semibold text-foreground/80 text-sm tracking-wide">{cat.category}</h3>
+                  <h3 className="font-rajdhani font-semibold text-foreground text-sm tracking-wide">{cat.category}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {cat.skills.map((skill) => (

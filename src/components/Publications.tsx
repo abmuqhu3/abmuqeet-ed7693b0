@@ -64,20 +64,20 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
       >
         <div className="flex gap-5">
           <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mt-1">
-            <BookOpen className="h-5 w-5 text-primary/70" />
+            <BookOpen className="h-5 w-5 text-primary" />
           </div>
 
           <div className="flex-1 min-w-0">
-            <h3 className="text-base font-rajdhani font-bold text-foreground/85 leading-snug mb-2 hover:text-foreground transition-colors tracking-wide">
+            <h3 className="text-base font-rajdhani font-bold text-foreground leading-snug mb-2 hover:text-primary transition-colors tracking-wide">
               {pub.title}
             </h3>
 
-            <p className="text-muted-foreground/50 mb-1 font-mono-code text-xs">{pub.authors}</p>
+            <p className="text-muted-foreground mb-1 font-mono-code text-xs">{pub.authors}</p>
 
             <div className="flex flex-wrap items-center gap-2 mb-4">
-              <span className="tech-badge !border-primary/20 !text-primary/70 !bg-primary/5">{pub.venue}</span>
-              <span className="text-xs text-muted-foreground/30">{pub.institution}</span>
-              <span className="text-xs text-muted-foreground/25 font-mono-code">{pub.year}</span>
+              <span className="tech-badge !border-primary/30 !text-primary !bg-primary/5">{pub.venue}</span>
+              <span className="text-xs text-muted-foreground/80">{pub.institution}</span>
+              <span className="text-xs text-muted-foreground/70 font-mono-code">{pub.year}</span>
             </div>
 
             <AnimatePresence>
@@ -90,8 +90,8 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
                   className="overflow-hidden"
                 >
                   <div className="floating-card p-5 mb-4">
-                    <p className="text-[10px] font-orbitron font-semibold uppercase tracking-[0.2em] text-primary/60 mb-3">Abstract</p>
-                    <p className="text-sm text-muted-foreground/55 leading-relaxed font-space">{pub.abstract}</p>
+                    <p className="text-[10px] font-orbitron font-semibold uppercase tracking-[0.2em] text-primary mb-3">Abstract</p>
+                    <p className="text-sm text-foreground/75 leading-relaxed font-space">{pub.abstract}</p>
                   </div>
 
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -105,7 +105,7 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
                   {pub.isPdf && (
                     <div className="mb-4 floating-card overflow-hidden">
                       <div className="flex items-center px-4 py-2.5 bg-secondary/30 border-b border-border/30">
-                        <span className="text-[10px] font-orbitron font-semibold text-primary/60 uppercase tracking-[0.2em]">Paper Preview</span>
+                        <span className="text-[10px] font-orbitron font-semibold text-primary/80 uppercase tracking-[0.2em]">Paper Preview</span>
                       </div>
                       <iframe
                         src={pub.pdfUrl + "#toolbar=0&navpanes=0&scrollbar=1"}
@@ -122,7 +122,7 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
             <div className="flex items-center gap-4 flex-wrap">
               <button
                 onClick={() => setExpanded(!expanded)}
-                className="flex items-center gap-1.5 text-[11px] font-orbitron text-primary/60 hover:text-primary transition-colors duration-300 tracking-wider"
+                className="flex items-center gap-1.5 text-[11px] font-orbitron text-primary/80 hover:text-primary transition-colors duration-300 tracking-wider"
               >
                 {expanded ? "COLLAPSE" : "EXPAND"}
                 <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
@@ -133,7 +133,7 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
                   variant="outline"
                   size="sm"
                   onClick={() => setPdfOpen(true)}
-                  className="text-[10px] font-orbitron border-border/40 hover:border-primary/40 text-muted-foreground/50 hover:text-foreground/80 rounded-xl h-7 tracking-wider"
+                  className="text-[10px] font-orbitron border-border/40 hover:border-primary/40 text-muted-foreground hover:text-foreground rounded-xl h-7 tracking-wider"
                 >
                   <Eye className="h-3 w-3 mr-1.5" />
                   PREVIEW PDF
@@ -148,8 +148,8 @@ const PublicationCard = ({ pub, index }: { pub: typeof publications[0]; index: n
         <Dialog open={pdfOpen} onOpenChange={setPdfOpen}>
           <DialogContent className="max-w-5xl max-h-[90vh] bg-card border-border/30">
             <DialogHeader>
-              <DialogTitle className="text-sm pr-8 font-rajdhani font-bold text-foreground/85 tracking-wide">{pub.title}</DialogTitle>
-              <DialogDescription className="font-mono-code text-xs text-muted-foreground/50">{pub.authors} — {pub.venue} {pub.year}</DialogDescription>
+              <DialogTitle className="text-sm pr-8 font-rajdhani font-bold text-foreground tracking-wide">{pub.title}</DialogTitle>
+              <DialogDescription className="font-mono-code text-xs text-muted-foreground">{pub.authors} — {pub.venue} {pub.year}</DialogDescription>
             </DialogHeader>
             <div className="w-full h-[70vh] rounded-xl overflow-hidden border border-border/30">
               <iframe
@@ -185,7 +185,7 @@ const Publications = () => {
           <h2 className="text-3xl md:text-5xl font-orbitron font-bold mb-4 tracking-wide">
             <span className="text-primary glow-text-blue">Publications</span>
           </h2>
-          <p className="text-muted-foreground/45 mb-12 max-w-2xl text-sm font-space">
+          <p className="text-muted-foreground mb-12 max-w-2xl text-sm font-space">
             Peer-reviewed research in driver safety systems, medical AI, computer vision, and intelligent systems.
           </p>
           <div className="w-20 h-0.5 bg-gradient-to-r from-primary/60 to-transparent mb-12" />
