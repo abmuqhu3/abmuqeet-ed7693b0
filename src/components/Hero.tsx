@@ -71,7 +71,7 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
         <div className="flex items-center gap-3">
           <div className="w-8 h-px bg-primary/30" />
           <span className="font-orbitron text-[10px] tracking-[0.4em] text-primary font-semibold">AB</span>
-          <span className="font-mono-code text-[9px] tracking-wider text-muted-foreground/60">// v2.0</span>
+          <span className="font-mono-code text-[9px] tracking-wider text-muted-foreground/60">​ </span>
         </div>
         <div className="hidden md:flex items-center gap-3">
           <div className="section-label">
