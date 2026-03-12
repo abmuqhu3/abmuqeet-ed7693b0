@@ -53,7 +53,7 @@ const About = () => {
               <div className="space-y-4">
                 {[
                   { icon: GraduationCap, title: "M.Tech — Robotics & AI", sub: "Nitte Meenakshi Institute of Technology", extra: "CGPA: 8.21 • 2024 – 2025" },
-                  { icon: GraduationCap, title: "B.E — Electronics & Communication", sub: "HMS Institute of Technology", extra: "CGPA: 6.24 • 2018 – 2022" },
+                  { icon: GraduationCap, title: "B.E — Electronics & Communication", sub: "HMS Institute of Technology", extra: "CGPA: 6.24 • 2018 – 2023" },
                   { icon: Award, title: "Certifications", sub: "UiPath Academy • Udemy ROS2 • NPTEL Edge Computing & Big Data • Smart India Hackathon 2024 • IEEE RAS Summit", extra: "" },
                   { icon: BookOpen, title: "3 Publications", sub: "RCAAI 2025 (Taylor & Francis) • DDAWS Conference Paper", extra: "" },
                 ].map((item, i) => {
