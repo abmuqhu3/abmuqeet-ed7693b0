@@ -14,8 +14,8 @@ const publications = [
   {
     title: "A Real-Time Driver Drowsiness and Attention Warning System Using Adaptive Facial Landmark Analysis and Hierarchical Alert Architecture",
     authors: "Kalaigar Abdul Muqeet, Dr. Rajalakshmi",
-    venue: "Conference Paper",
-    institution: "TiHAN, IIT Hyderabad",
+    venue: "IEEE VTC 2026",
+    institution: "IEEE Vehicular Technology Conference",
     year: "2026",
     abstract:
       "We present DDAWS, a lightweight, camera-only framework that fuses per-driver adaptive calibration with six concurrent physiological cues — Eye Aspect Ratio (EAR), Mouth Aspect Ratio (MAR), PERCLOS, estimated Karolinska Sleepiness Scale (KSS), and 3-D head-pose yaw and pitch — under a two-tier hierarchical alert scheme with explicit state recovery. The pipeline runs on a standard CPU at under 5 ms per frame with no GPU and no pre-trained weights. Tested on 23 participants across 63,544 frames (35.3 min), DDAWS achieved a mean Detection Rate of 79.09%, Alert Precision of 72.09%, Gaze Consistency of 85.83%, and a Composite System Score of 69.67%.",
@@ -27,8 +27,8 @@ const publications = [
     title: "Identification and Classification of Pneumonia Medical Condition using U-Net Algorithm",
     authors: "Kalaigar Abdul Muqeet, Kiran MC, Vasanthakumar GU",
     venue: "RCAAI 2025",
-    institution: "Taylor & Francis",
-    year: "2026",
+    institution: "RCAAI 2025 · Taylor & Francis",
+    year: "2025",
     abstract:
       "Pneumonia remains a leading cause of death worldwide. This paper presents a U-Net model in conjunction with deep learning to automate classification and segmentation of diseased lung sections from X-ray images. The model is trained for pixel-wise segmentation, generating masks that accurately delineate lung regions affected by pneumonia. Performance metrics include Dice coefficient (0.76), IoU (0.62), and classification accuracy of 89%.",
     keywords: ["Deep Learning", "Image Segmentation", "U-Net Architecture", "Pixel-wise Segmentation"],
@@ -39,8 +39,8 @@ const publications = [
     title: "Optical Character Recognition Assisted Automated Medication Prescription Reader System",
     authors: "Kalaigar Abdul Muqeet, Kiran MC, Vasanthakumar GU",
     venue: "RCAAI 2025",
-    institution: "Taylor & Francis",
-    year: "2026",
+    institution: "RCAAI 2025 · Taylor & Francis",
+    year: "2025",
     abstract:
       "This paper presents a web-based system that uses Google Vision API to extract medicine names, dosages, and frequencies from printed prescriptions. The system preprocesses prescription images with OpenCV, organizes extracted text with NLP and regex approaches. Features a pharmaceutical reminder system that alerts users about scheduled dosages and monitors medication supply.",
     keywords: ["Google Vision API", "OCR", "Prescription Recognition", "NLP", "Reinforcement Learning"],

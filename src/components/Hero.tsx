@@ -161,14 +161,14 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
           transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}>
           
           <p className="text-xs md:text-sm text-foreground/70 leading-relaxed font-light mb-4 max-w-md font-space">
-            Building intelligent autonomous systems — Robotics, AI/ML, Perception,{" "}
-            <span className="text-foreground font-medium">ADAS</span> technologies, and{" "}
-            <span className="text-primary font-medium">next-gen vehicle platforms</span>.
+            50 Hz CAN control loops, mmWave radar perception, and the{" "}
+            <span className="text-foreground font-medium">safety-critical software</span> that keeps a{" "}
+            <span className="text-primary font-medium">Software-Defined Vehicle</span> from doing anything stupid.
           </p>
 
           <h1 className="text-[clamp(2.5rem,7vw,6rem)] font-light leading-[0.95] tracking-tight text-foreground/90 whitespace-nowrap">
             <DrawingText
-              text="Research"
+              text="ADAS"
               className="italic font-serif-display font-light text-foreground/70"
               delay={1.2} />
             {" "}
@@ -176,7 +176,7 @@ const Hero = ({ scrollProgress, onArmGrab }: HeroProps) => {
               text="Engineer"
               className="font-rajdhani font-bold not-italic"
               delay={1.9} />
-            
+
           </h1>
 
           {/* Animated underline */}

@@ -1,73 +1,31 @@
-# Welcome to your Lovable project
+# Abdul Muqeet Kalaigar — Portfolio
 
-## Project info
+Personal portfolio site for **Abdul Muqeet Kalaigar**, Robotics & ADAS Software Engineer at TIHAN, IIT-Hyderabad.
 
-**URL**: https://lovable.dev/projects/e9e7cdf4-239a-4e48-9eec-003671af02c1
+## Stack
 
-## How can I edit this code?
+- Vite + TypeScript + React 18
+- Tailwind CSS + shadcn/ui
+- Framer Motion (animations)
+- Three.js via `@react-three/fiber` (3D robotic arm background)
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/e9e7cdf4-239a-4e48-9eec-003671af02c1) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Local development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Dev server runs at http://localhost:8080.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Production build
 
-**Use GitHub Codespaces**
+```sh
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Static output goes to `dist/`. Deploy that folder to any static host (GitHub Pages, Cloudflare Pages, Netlify, Vercel).
 
-## What technologies are used for this project?
+## Content ownership
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/e9e7cdf4-239a-4e48-9eec-003671af02c1) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+All content — projects, publications, experience — is written by Abdul and reflects real work on the PixKit SDV research vehicle at TIHAN, IIT-Hyderabad.

@@ -1,41 +1,59 @@
 import { motion } from "framer-motion";
-import { Code, Brain, Cpu, Wrench, Bot, Users, Car, Zap } from "lucide-react";
+import { Code, Brain, Cpu, Wrench, Bot, Users, Car, Zap, Radar, Shield } from "lucide-react";
 
 const skillCategories = [
   {
+    category: "Automotive / SDV",
+    icon: Car,
+    skills: ["NXP S32G", "TI Jacinto TDA4VM", "TI Jacinto J721E", "CAN", "CAN-FD", "DBC", "socket-CAN", "VCU Control", "AEB / EPB / E-stop", "ISO 26262 (familiar)", "Life Counters + XOR", "Modbus TCP"],
+    color: "from-neon-orange/20 to-neon-blue/10",
+  },
+  {
+    category: "Perception & Sensor Fusion",
+    icon: Radar,
+    skills: ["TI AWR2944 mmWave Radar", "Livox HAP LiDAR", "Velodyne VLP-16", "Fixposition RTK-GPS (Vision-RTK2)", "RGB-D", "IMU", "EKF Fusion", "DBSCAN", "Point Clouds", "PCL", "OpenCV"],
+    color: "from-neon-cyan/20 to-accent/10",
+  },
+  {
+    category: "Robotics & Autonomy",
+    icon: Bot,
+    skills: ["ROS Noetic", "ROS2 Humble", "Nav2", "ALOAM SLAM", "NDT Localization", "MPC Path Following", "Cartographer", "RTAB-Map", "ORB-SLAM3", "TF2", "DWA", "Path Planning", "Multi-Robot Systems"],
+    color: "from-neon-purple/20 to-neon-blue/10",
+  },
+  {
+    category: "Embedded Platforms",
+    icon: Cpu,
+    skills: ["NVIDIA Jetson AGX Orin", "NXP S32G aarch64", "TI Jacinto TDA4VM / J721E", "ESP32", "STM32", "Arduino", "Raspberry Pi", "Real-time Linux", "PLCs"],
+    color: "from-neon-blue/20 to-neon-cyan/10",
+  },
+  {
     category: "Programming",
     icon: Code,
-    skills: ["Python", "C++ (Basics)", "SQL", "MATLAB"],
+    skills: ["Python", "C++", "C", "Bash", "SQL", "JavaScript", "TypeScript"],
     color: "from-neon-blue/20 to-neon-cyan/10",
   },
   {
     category: "AI / Computer Vision",
     icon: Brain,
-    skills: ["PyTorch", "TensorFlow", "YOLO", "OpenCV", "Deep Learning", "CNNs", "NLP", "OCR", "Pandas", "NumPy", "Scikit-Learn"],
+    skills: ["PyTorch", "TensorFlow", "TensorRT", "CNNs", "U-Net", "YOLO", "MediaPipe FaceMesh", "OCR", "NLP", "Reinforcement Learning", "Scikit-learn", "Pandas", "NumPy"],
     color: "from-neon-purple/20 to-neon-blue/10",
   },
   {
-    category: "Robotics / Autonomous Systems",
-    icon: Bot,
-    skills: ["ROS / ROS2", "SLAM", "Navigation Stack", "Sensor Fusion", "Path Planning", "LLMs", "Multi-Agent Systems"],
-    color: "from-neon-cyan/20 to-accent/10",
+    category: "Simulation & Validation",
+    icon: Shield,
+    skills: ["Gazebo", "NVIDIA Isaac Sim", "Ansys AVxcelerate", "MATLAB", "Fusion 360 CAD"],
+    color: "from-accent/15 to-neon-cyan/10",
   },
   {
-    category: "Automotive / Embedded",
-    icon: Car,
-    skills: ["TI Jacinto", "OpenVX", "Vision Apps", "TIDL", "Embedded Linux", "ESP32", "STM32", "Arduino", "NVIDIA Jetson", "PLCs"],
-    color: "from-neon-orange/20 to-neon-blue/10",
-  },
-  {
-    category: "Tools & Platforms",
+    category: "DevOps & Tools",
     icon: Wrench,
-    skills: ["Git / GitHub", "Linux", "Docker", "Fusion 360", "Ansys", "UiPath RPA"],
+    skills: ["Docker", "Git / GitHub", "Linux", "systemd", "CI / CD", "Cython", "AES-256-CBC", "FastAPI", "MongoDB Atlas", "Firebase", "Cloudflared", "UiPath RPA"],
     color: "from-neon-blue/15 to-neon-purple/10",
   },
   {
     category: "Soft Skills",
     icon: Users,
-    skills: ["Problem Solving", "Research & Innovation", "Adaptability", "Communication", "Team Work"],
+    skills: ["Systems Debugging", "Root-Cause Analysis", "Technical Writing", "Research & Innovation", "Adaptability", "Cross-team Communication"],
     color: "from-accent/15 to-neon-cyan/10",
   },
 ];

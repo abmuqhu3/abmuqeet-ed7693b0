@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Metrics from "@/components/Metrics";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Publications from "@/components/Publications";
@@ -17,6 +18,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navItems = [
   { label: "Home", id: "home" },
   { label: "About", id: "about" },
+  { label: "Metrics", id: "metrics" },
   { label: "Skills", id: "skills" },
   { label: "Projects", id: "projects" },
   { label: "Publications", id: "publications" },
@@ -191,6 +193,8 @@ const Index = () => {
 
         <SectionDivider />
         <SectionReveal direction="left"><About /></SectionReveal>
+        <SectionDivider />
+        <SectionReveal direction="bottom"><Metrics /></SectionReveal>
         <SectionDivider />
         <SectionReveal direction="right"><Skills /></SectionReveal>
         <SectionDivider />
